@@ -27,7 +27,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-gray-700 mb-6 text-sm sm:text-base max-w-md">
-              Professional camera equipment and solutions for creative professionals.
+              Bridging the Technology Gap with Hybrid AI-Powered Vision Solutions.
             </p>
 
             {/* Social / Contact Links */}

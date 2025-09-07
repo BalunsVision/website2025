@@ -3,9 +3,9 @@
     "title": "Our Commitment to Innovation",
     "description": "With a strong passion for advanced machine vision, we develop precision-driven applications using Industrial Cameras. Serving industries such as Printing, Packaging, Pharmaceutical, Automotive, Food Processing, and Textiles, we deliver Hybrid AI-powered vision solutions that enhance inspection accuracy and operational efficiency.",
     "media": {
-      "images": ["/uploads/5b0a2014-5f5e-43f5-b2d9-cc50235e60d0.png"],
-      "videos": ["/uploads/Video_Edited_Link_Provided.mp4"],
-      "htmlFiles": ["/uploads/2.html"]
+      "images": ["/uploads/commitment.jpg"],
+      "videos": [],
+      "htmlFiles": []
     },
     "bg": "bg-white",
     "gradient": "from-orange-primary/10 to-transparent",
@@ -15,8 +15,8 @@
     "title": "Our Mission",
     "description": "To bridge the technology gap by delivering advanced, accessible machine vision solutions that empower industries to achieve greater efficiency, accuracy, and innovation—while upholding the highest standards of integrity and excellence.",
     "media": {
-      "images": ["/uploads/5b0a2014-5f5e-43f5-b2d9-cc50235e60d0.png"],
-      "videos": ["/uploads/Video_Edited_Link_Provided.mp4"],
+      "images": ["/uploads/Main_2.png"],
+      "videos": [],
       "htmlFiles": []
     },
     "bg": "bg-orange-50",

@@ -1,34 +1,42 @@
 [
   {
     "name": "Logo 1",
-    "image": "/uploads/excited-young-woman-showing-banner-pointing-fingers-left-smiling-camera-standing-amazed-white-wall.jpg"
+    "image": "/uploads/client/logo_itc.png"
   },
   {
     "name": "Logo 2",
-    "image": "/uploads/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer.jpg"
+    "image": "/uploads/client/indoMIM.png"
   },
   {
     "name": "Logo 3",
-    "image": "/uploads/240_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg"
+    "image": "/uploads/client/Memory.png"
   },
   {
     "name": "Logo 4",
-    "image": "/uploads/240_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
+    "image": "/uploads/client/tata_logo.png"
   },
   {
     "name": "Logo 5",
-    "image": "/uploads/excited-young-woman-showing-banner-pointing-fingers-left-smiling-camera-standing-amazed-white-wall.jpg"
+    "image": "/uploads/client/Bosch.png"
   },
   {
     "name": "Logo 6",
-    "image": "/uploads/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer.jpg"
+    "image": "/uploads/client/Hikrobot.png"
   },
   {
     "name": "Logo 7",
-    "image": "/uploads/240_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg"
+    "image": "/uploads/client/pgp.png"
   },
   {
     "name": "Logo 8",
-    "image": "/uploads/240_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
+    "image": "/uploads/client/welspun-word-logo.png"
+  },
+    {
+    "name": "Logo 9",
+    "image": "/uploads/client/Omron.gif"
+  },
+    {
+    "name": "Logo 10",
+    "image": "/uploads/client/v-vab-logo.png"
   }
 ]

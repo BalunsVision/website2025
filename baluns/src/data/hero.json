@@ -16,12 +16,14 @@
       }
     ],
     "media": {
-      "images": ["/uploads/5b0a2014-5f5e-43f5-b2d9-cc50235e60d0.png"],
       "videos": [
-        "/uploads/Video_Edited_Link_Provided.mp4",
+        "/uploads/Home_1.mp4",
         "/uploads/Video_Edited_Link_Provided.mp4"
       ],
-      "htmlFiles": ["/uploads/2.html"]
+      "images": ["/uploads/home.png",
+                 "/uploads/main.jpg"],
+
+      "htmlFiles": []
     }
   }
 ]

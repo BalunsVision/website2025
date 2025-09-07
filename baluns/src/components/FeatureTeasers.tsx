@@ -10,15 +10,15 @@ const FeatureTeasers = () => {
       link: "/products"
     },
     {
-      title: "Solutions Projects", 
+      title: "Solution & Projects", 
       description: "Custom AI-powered vision solutions for Printing, Packaging, Pharmaceutical, Automotive, Food Processing, and Textiles.",
-      image: "/uploads/5ade3547-8cdb-4d0d-b108-eadf224a77b1.png",
+      image: "/uploads/Home_3.jpeg",
       link: "/solutions"
     },
     {
       title: "Shop",
       description: "Browse our complete range of machine vision products and accessories for your industrial automation needs.",
-      image: "/uploads/2bdbe060-0376-4181-a227-cdd1824f0f93.png", 
+      image: "/uploads/Home_4.jpeg", 
       link: "/products"
     }
   ];
