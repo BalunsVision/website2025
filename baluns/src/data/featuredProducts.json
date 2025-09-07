@@ -1,0 +1,194 @@
+[
+  {
+    "id": "mould-tool",
+    "title": "Mould Tool Inspection System",
+    "subtitle": "Ensuring each mold meets precise quality standards.",
+    "media": {
+      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
+      "videos": [
+        "/uploads/Video_Edited_Link_Provided.mp4",
+        "/uploads/Video_Edited_Link_Provided.mp4"
+      ],
+      "htmlFiles": []
+    },
+    "background": "/uploads/group-1000001855.png",
+    "sections": [
+      {
+        "title": "Precision Mould Checking",
+        "description": "Ensures each mould is manufactured to exact specifications, reducing defects in final products.",
+        "features": []
+      }
+    ]
+  },
+  {
+    "id": "roundness-tester",
+    "title": "Capsule Roundness Tester",
+    "subtitle": "Advanced optical inspection system for testing flavour capsules of cigarettes on a sampling basis.",
+    "media": {
+      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
+      "videos": ["/uploads/2.mp4"],
+      "htmlFiles": []
+    },
+    "background": "/uploads/group-1000001854.png",
+    "sections": [
+      {
+        "title": "Sampling Capacity",
+        "description": "Can measure up to 20 capsules in a single instance.",
+        "features": []
+      },
+      {
+        "title": "Precise Measurement",
+        "description": "Provides accurate roundness measurements.",
+        "features": []
+      },
+      {
+        "title": "Colour Compatibility",
+        "description": "Compatible with capsules of various colours.",
+        "features": []
+      }
+    ]
+  },
+  {
+    "id": "label-inspection",
+    "title": "Label Inspection System",
+    "subtitle": "High-precision label quality inspection system for production lines.",
+    "media": {
+      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
+      "videos": ["/uploads/3.mp4"],
+      "htmlFiles": []
+    },
+    "background": "/uploads/group-1000001855.png",
+    "sections": [
+      {
+        "title": "High-Speed Label Inspection",
+        "description": "Ensures printed labels meet design and positioning requirements without slowing production.",
+        "features": []
+      },
+      {
+        "title": "Defect Detection",
+        "description": "Identifies misaligned, damaged, or missing labels in real-time.",
+        "features": []
+      },
+      {
+        "title": "Data Logging",
+        "description": "Logs inspection results for traceability and quality control.",
+        "features": []
+      }
+    ]
+  },
+  {
+    "id": "advanced-pct",
+    "title": "Advanced PCT Inspection System",
+    "subtitle": "A next-generation solution for ultra-fast and accurate PCT Inspection engineered for speed, precision, and reliability in cigarette manufacturing.",
+    "media": {
+      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
+      "videos": [],
+      "htmlFiles": ["/uploads/2.html"]
+    },
+    "background": "/uploads/group-1000001854.png",
+    "sections": [
+      {
+        "title": "Custom Algorithm for Defect Detection",
+        "description": "Proprietary image processing algorithms ensure accurate inspection even at maximum speed. Following defects can be identified:",
+        "features": [
+          "Wander",
+          "Skewness",
+          "Width Check",
+          "Torn PCT",
+          "Flagging"
+        ]
+      },
+      {
+        "title": "Ultra High Speed Performance",
+        "description": "Inspects up to 12,000 units per minute in production, with lab-tested capability reaching 18,000 units/minute.",
+        "features": []
+      },
+      {
+        "title": "Versatile PCT Type Support",
+        "description": "Supports multiple types of PCT for reliable results.",
+        "features": ["White on White", "Brown on White", "Black on White"]
+      },
+      {
+        "title": "Easy to Configure",
+        "description": "Configure under 5 minutes with minimal setup.",
+        "features": []
+      },
+      {
+        "title": "Universal Mounting System",
+        "description": "Flexible integration with existing production lines.",
+        "features": []
+      },
+      {
+        "title": "Interactive Real-Time GUI",
+        "description": "Modify inspection settings and parameters with an intuitive user interface.",
+        "features": []
+      },
+      {
+        "title": "NG Image Logging",
+        "description": "Logs defective images for up to 3 months for review and quality control.",
+        "features": []
+      },
+      {
+        "title": "SAP Integration Ready",
+        "description": "Seamless data exchange and production analytics for manufacturing.",
+        "features": []
+      },
+      {
+        "title": "Beckhoff Industrial IPC",
+        "description": "Rugged and reliable industrial-grade hardware for 24/7 operation.",
+        "features": []
+      }
+    ]
+  },
+  {
+    "id": "wet-capsule",
+    "title": "Online Wet Capsule Inspection System",
+    "subtitle": "Advanced vision-based inspection system using deep learning and hybrid image analysis to detect improper capsule formation during production. This system helps reduce manual inspection, improve consistency during production, and prevent defective products from reaching the market.",
+    "media": {
+      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
+      "videos": [],
+      "htmlFiles": ["/uploads/2.html"]
+    },
+    "background": "/uploads/group-1000001855.png",
+    "sections": [
+      {
+        "title": "Various Defects Detected",
+        "description": "Detects multiple defects during production:",
+        "features": [
+          "Satellite / Tail Formation",
+          "Oversized or Undersized Capsules",
+          "Oval Capsules",
+          "Double Capsules",
+          "Air Bubbles",
+          "Irregular Shapes",
+          "Eccentricity"
+        ]
+      },
+      {
+        "title": "High Precision Camera",
+        "description": "Detects up to 80 micron defects with precision optics.",
+        "features": []
+      },
+      {
+        "title": "Hybrid-AI Algorithm",
+        "description": "Analyses capsules using deep learning and hybrid image analysis for unmatched accuracy.",
+        "features": []
+      },
+      {
+        "title": "Interactive GUI",
+        "description": "Modify inspection settings and parameters with an intuitive interface.",
+        "features": []
+      },
+      {
+        "title": "User-Friendly",
+        "description": "Easy to configure and switch jobs quickly.",
+        "features": []
+      },
+      {
+        "title": "Daily Report Generation",
+        "description": "Automatically generates daily inspection reports.",
+        "features": []
+      }
+    ]
+  }
+]

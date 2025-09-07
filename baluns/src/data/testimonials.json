@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Jennifer",
+    "rating": 5,
+    "text": "Best of the best... in class",
+    "subtitle": "Very good camera system with amazing quality and easy to use interface.",
+    "media": {
+      "images": [
+        "/uploads/240_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
+      ],
+      "videos": [],
+      "htmlFiles": []
+    }
+  },
+  {
+    "name": "Sarah Wilson",
+    "rating": 5,
+    "text": "Best of the best... in class",
+    "subtitle": "Outstanding product quality and excellent customer service support.",
+    "media": {
+      "images": [
+        "/uploads/240_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg"
+      ],
+      "videos": [],
+      "htmlFiles": []
+    }
+  },
+  {
+    "name": "Mike Johnson",
+    "rating": 5,
+    "text": "Best of the best... in class",
+    "subtitle": "Professional grade equipment that exceeds all expectations.",
+    "media": {
+      "images": [
+        "/uploads/excited-young-woman-showing-banner-pointing-fingers-left-smiling-camera-standing-amazed-white-wall.jpg"
+      ],
+      "videos": [],
+      "htmlFiles": ["/uploads/2.html", "/uploads/2.html"]
+    }
+  },
+  {
+    "name": "Lisa Davis",
+    "rating": 5,
+    "text": "Best of the best... in class",
+    "subtitle": "Incredible value for money and amazing build quality.",
+    "media": {
+      "images": [
+        "/uploads/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer.jpg"
+      ],
+      "videos": ["/uploads/Video_Edited_Link_Provided.mp4"],
+      "htmlFiles": []
+    }
+  }
+]

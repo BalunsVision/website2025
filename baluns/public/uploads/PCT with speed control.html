@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cigarette Inspection Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        canvas {
+            display: block;
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            max-width: 300px;
+        }
+        #status-display {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 15px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+        h1, #status-display h2 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+        p, #status-display p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+        #status-display p {
+            display: flex;
+            justify-content: space-between;
+        }
+        #status-display span {
+            font-weight: bold;
+            min-width: 40px;
+            text-align: right;
+            margin-left: 20px;
+        }
+        #speed-control {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        #speed-control label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        #speed-control input[type="range"] {
+            width: 100%;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head><body>
+    <div id="info">
+        <h1>Advanced PCT Inspection System</h1>
+        <p>A simulation of an automated quality control process.</p>
+        <p>⚪ - OK Cigarette</p>
+        <p>� - Defective Cigarette</p>
+        <div id="speed-control">
+            <label for="speed-slider">Speed: <span id="speed-value">1</span> cigs/sec</label>
+            <input type="range" id="speed-slider" min="1" max="200" value="1">
+        </div>
+    </div>
+
+    <div id="status-display">
+        <h2>Inspection Status</h2>
+        <p>Total Inspected:<span id="total-count">0</span></p>
+        <p>Accepted:<span id="accepted-count" style="color: #99FF99;">0</span></p>
+        <p>Rejected:<span id="rejected-count" style="color: #FF6666;">0</span></p>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+        import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+
+        let scene, camera, renderer, controls;
+        let drum, inspectionCamera, rejector, okConveyor, rejectBin;
+        let cigarettes = [];
+        const clock = new THREE.Clock();
+        
+        let inspectionStats = { total: 0, accepted: 0, rejected: 0 };
+        let totalCountElem, acceptedCountElem, rejectedCountElem, speedSlider, speedValueElem;
+        let spawnInterval;
+
+        const config = {
+            drumRadius: 5,
+            drumLength: 8, // Reduced by 20% from 10
+            drumSpeed: 1.0, 
+            cigaretteRadius: 0.2,
+            cigaretteLength: 4,
+            numDrumSlots: 20,
+            feedAngle: Math.PI, 
+            inspectionAngle: Math.PI / 2,
+            rejectionAngle: 0, 
+            dropAngle: -Math.PI / 2, 
+            defectRate: 0.01,
+        };
+
+        const materials = {
+            drum: new THREE.MeshStandardMaterial({ color: 0xB0C4DE, metalness: 0.8, roughness: 0.3 }),
+            cigarette_ok: new THREE.MeshStandardMaterial({ color: 0xFFFFFF, roughness: 0.8 }),
+            cigarette_defect: new THREE.MeshStandardMaterial({ color: 0xFF6666, roughness: 0.8, emissive: 0xcc0000 }),
+            conveyor: new THREE.MeshStandardMaterial({ color: 0x282828, roughness: 0.9 }),
+            structure: new THREE.MeshStandardMaterial({ color: 0x708090, metalness: 0.9, roughness: 0.4 }),
+            rejectorPiston: new THREE.MeshStandardMaterial({ color: 0xffa500, metalness: 1.0, roughness: 0.2 }),
+            cameraBody: new THREE.MeshStandardMaterial({ color: 0xFF8C00, metalness: 0.7, roughness: 0.5 }),
+            cameraLens: new THREE.MeshStandardMaterial({ color: 0x000000, metalness: 1.0, roughness: 0.1 }),
+            rejectBin: new THREE.MeshStandardMaterial({ color: 0xFFD700, side: THREE.DoubleSide }),
+        };
+
+        // --- INITIALIZATION ---
+        function init() {
+            totalCountElem = document.getElementById('total-count');
+            acceptedCountElem = document.getElementById('accepted-count');
+            rejectedCountElem = document.getElementById('rejected-count');
+            speedSlider = document.getElementById('speed-slider');
+            speedValueElem = document.getElementById('speed-value');
+            
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x1a1a1a);
+            scene.fog = new THREE.Fog(0x1a1a1a, 30, 70);
+
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 8, 18);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.shadowMap.enabled = true;
+            document.body.appendChild(renderer.domElement);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
+            dirLight.position.set(10, 20, 5);
+            dirLight.castShadow = true;
+            dirLight.shadow.camera.top = 20;
+            dirLight.shadow.camera.bottom = -20;
+            dirLight.shadow.camera.left = -20;
+            dirLight.shadow.camera.right = 20;
+            scene.add(dirLight);
+
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.target.set(0, 2, 0);
+
+            createMachine();
+            createLabels();
+
+            // Setup speed control
+            speedSlider.addEventListener('input', (event) => {
+                const cigsPerSecond = parseInt(event.target.value);
+                handleSpeedChange(cigsPerSecond);
+            });
+            handleSpeedChange(parseInt(speedSlider.value));
+
+
+            window.addEventListener('resize', onWindowResize, false);
+            animate();
+        }
+        
+        function handleSpeedChange(cigsPerSecond) {
+            speedValueElem.innerText = cigsPerSecond;
+            // Calculate the required drum speed in radians per second
+            config.drumSpeed = (cigsPerSecond * 2 * Math.PI) / config.numDrumSlots;
+            // The interval between spawns is the inverse of the spawn rate
+            spawnInterval = 1 / cigsPerSecond;
+        }
+
+        // --- CREATE MESHES ---
+        function createMachine() {
+            const floorGeometry = new THREE.PlaneGeometry(100, 100);
+            const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.8 });
+            const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+            floor.rotation.x = -Math.PI / 2;
+            floor.receiveShadow = true;
+            scene.add(floor);
+
+            drum = createDrum();
+            scene.add(drum);
+            
+            inspectionCamera = createInspectionCamera();
+            inspectionCamera.position.set(0, config.drumRadius + 3.5, 0); 
+            scene.add(inspectionCamera);
+            
+            rejector = createRejector();
+            rejector.position.set(config.drumRadius + 0.5, 0, 0);
+            scene.add(rejector);
+
+            okConveyor = createConveyor(20, 4);
+            okConveyor.position.set(0, -config.drumRadius - 1, -12);
+            scene.add(okConveyor);
+
+            rejectBin = createBin(6, 6, 4);
+            rejectBin.position.set(config.drumRadius + 4, -3, 0);
+            scene.add(rejectBin);
+        }
+        
+        function createDrum() {
+            const group = new THREE.Group();
+            const drumGeo = new THREE.CylinderGeometry(config.drumRadius, config.drumRadius, config.drumLength, 64);
+            const mainDrum = new THREE.Mesh(drumGeo, materials.drum);
+            mainDrum.castShadow = true;
+            mainDrum.receiveShadow = true;
+            mainDrum.rotation.x = Math.PI / 2;
+            group.add(mainDrum);
+
+            const slotGeo = new THREE.BoxGeometry(0.2, 0.2, config.drumLength);
+            const slotMat = materials.structure; 
+
+            for (let i = 0; i < config.numDrumSlots; i++) {
+                const slot = new THREE.Mesh(slotGeo, slotMat);
+                const angle = (i / config.numDrumSlots) * Math.PI * 2;
+                const radius = config.drumRadius - 0.1; 
+                slot.position.x = radius * Math.cos(angle);
+                slot.position.y = radius * Math.sin(angle);
+                
+                group.add(slot);
+            }
+            return group;
+        }
+
+        function createInspectionCamera() {
+            const group = new THREE.Group();
+            const bodyGeo = new THREE.BoxGeometry(3, 2, 3);
+            const body = new THREE.Mesh(bodyGeo, materials.cameraBody);
+            body.castShadow = true;
+            group.add(body);
+
+            const lensGeo = new THREE.CylinderGeometry(0.8, 0.6, 1, 32);
+            const lens = new THREE.Mesh(lensGeo, materials.cameraLens);
+            lens.position.y = -1;
+            lens.rotation.x = Math.PI;
+            body.add(lens);
+
+            const flashGeo = new THREE.ConeGeometry(2, 4, 32, 1, true);
+            const flashMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9, side: THREE.DoubleSide });
+            const flash = new THREE.Mesh(flashGeo, flashMat);
+            flash.position.y = -3;
+            flash.visible = false;
+            group.add(flash);
+            group.flash = flash;
+            return group;
+        }
+        
+        function createRejector() {
+            const group = new THREE.Group();
+            const housingGeo = new THREE.BoxGeometry(1, 2, config.cigaretteLength + 1);
+            const housing = new THREE.Mesh(housingGeo, materials.structure);
+            housing.castShadow = true;
+            group.add(housing);
+
+            const pistonGeo = new THREE.CylinderGeometry(0.3, 0.3, 3, 16);
+            const piston = new THREE.Mesh(pistonGeo, materials.rejectorPiston);
+            piston.rotation.z = Math.PI / 2;
+            piston.position.x = -1;
+            group.piston = piston;
+            group.add(piston);
+            return group;
+        }
+        
+        function createConveyor(length, width) {
+            const group = new THREE.Group();
+            const beltGeo = new THREE.BoxGeometry(width, 0.2, length);
+            const belt = new THREE.Mesh(beltGeo, materials.conveyor);
+            belt.receiveShadow = true;
+            belt.position.y = -0.1;
+            group.add(belt);
+            group.belt = belt;
+
+            const sideGeo = new THREE.BoxGeometry(0.2, 0.5, length);
+            const sideMat = materials.structure;
+            const side1 = new THREE.Mesh(sideGeo, sideMat);
+            side1.position.x = -width/2 - 0.1;
+            group.add(side1);
+            const side2 = side1.clone();
+            side2.position.x = width/2 + 0.1;
+            group.add(side2);
+            return group;
+        }
+        
+        function createBin(width, depth, height) {
+            const group = new THREE.Group();
+            const thickness = 0.2;
+            const binMat = materials.rejectBin;
+
+            const floor = new THREE.Mesh(new THREE.BoxGeometry(width, thickness, depth), binMat);
+            floor.position.y = -height/2;
+            group.add(floor);
+
+            const wall1 = new THREE.Mesh(new THREE.BoxGeometry(thickness, height, depth), binMat);
+            wall1.position.x = -width/2;
+            group.add(wall1);
+            
+            const wall2 = wall1.clone();
+            wall2.position.x = width/2;
+            group.add(wall2);
+            
+            const wall3 = new THREE.Mesh(new THREE.BoxGeometry(width, height, thickness), binMat);
+            wall3.position.z = -depth/2;
+            group.add(wall3);
+
+            const wall4 = wall3.clone();
+            wall4.position.z = depth/2;
+            group.add(wall4);
+            return group;
+        }
+
+        function createCigarette() {
+            const isDefective = Math.random() < config.defectRate;
+            
+            const cigaretteMat = materials.cigarette_ok.clone(); 
+            const cigaretteGeo = new THREE.CylinderGeometry(config.cigaretteRadius, config.cigaretteRadius, config.cigaretteLength, 16);
+            const cigarette = new THREE.Mesh(cigaretteGeo, cigaretteMat);
+            cigarette.castShadow = true;
+            
+            cigarette.rotation.x = Math.PI / 2;
+            cigarette.userData = {
+                isDefective: isDefective,
+                status: 'on_drum', 
+                angle: config.feedAngle,
+            };
+            
+            cigarette.position.x = Math.cos(cigarette.userData.angle) * config.drumRadius;
+            cigarette.position.y = Math.sin(cigarette.userData.angle) * config.drumRadius;
+            cigarette.position.z = 0;
+            cigarettes.push(cigarette);
+            scene.add(cigarette);
+        }
+
+        // --- LABELS ---
+        function createLabels() {
+            const loader = new FontLoader();
+            loader.load('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/fonts/helvetiker_regular.typeface.json', function (font) {
+                const textMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
+                const textGeoOptions = { font: font, size: 0.5, height: 0.05 };
+
+                const logoGeo = new TextGeometry('Baluns', { font: font, size: 0.4, height: 0.1 });
+                logoGeo.computeBoundingBox();
+                const centerOffset = -0.5 * (logoGeo.boundingBox.max.x - logoGeo.boundingBox.min.x);
+                const logoLabel = new THREE.Mesh(logoGeo, textMaterial);
+                logoLabel.position.set(centerOffset, config.drumRadius + 3.3, 1.51);
+                scene.add(logoLabel);
+
+                const camLabelGeo = new TextGeometry('Inspection Camera', textGeoOptions);
+                const camLabel = new THREE.Mesh(camLabelGeo, textMaterial);
+                camLabel.position.set(2, config.drumRadius + 3.5, 0);
+                scene.add(camLabel);
+
+                const rejectorLabelGeo = new TextGeometry('Rejector', textGeoOptions);
+                const rejectorLabel = new THREE.Mesh(rejectorLabelGeo, textMaterial);
+                rejectorLabel.position.set(config.drumRadius + 2, 1, 0);
+                scene.add(rejectorLabel);
+                
+                const conveyorLabelGeo = new TextGeometry('OK Conveyor', textGeoOptions);
+                const conveyorLabel = new THREE.Mesh(conveyorLabelGeo, textMaterial);
+                conveyorLabel.position.set(3, -config.drumRadius - 0.5, -5);
+                scene.add(conveyorLabel);
+                
+                const rejectBinLabelGeo = new TextGeometry('Reject Bin', textGeoOptions);
+                const rejectBinLabel = new THREE.Mesh(rejectBinLabelGeo, textMaterial);
+                rejectBinLabel.position.set(config.drumRadius + 2, -1, 3);
+                scene.add(rejectBinLabel);
+            });
+        }
+        
+        // --- ANIMATION & SYNCHRONIZATION ---
+        let lastSpawnTime = 0;
+        const normalizedDropAngle = normalizeAngle(config.dropAngle);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            inspectionCamera.flash.visible = false;
+            
+            const delta = clock.getDelta();
+            const elapsedTime = clock.getElapsedTime();
+
+            drum.rotation.z -= config.drumSpeed * delta;
+
+            if (elapsedTime - lastSpawnTime > spawnInterval) {
+                createCigarette();
+                lastSpawnTime = elapsedTime;
+            }
+
+            updateCigarettes(delta);
+            updateStatusDisplay();
+            
+            if(rejector.piston.position.x > -1) {
+                rejector.piston.position.x -= 5 * delta;
+            } else {
+                rejector.piston.position.x = -1;
+            }
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        function updateCigarettes(delta) {
+            cigarettes.forEach((c, index) => {
+                const data = c.userData;
+                
+                if (c.position.y < -20 || c.position.z < -25) {
+                    c.geometry.dispose();
+                    c.material.dispose();
+                    scene.remove(c);
+                    cigarettes.splice(index, 1);
+                    return;
+                }
+                
+                switch(data.status) {
+                    case 'on_drum':
+                    case 'inspected':
+                        data.angle -= config.drumSpeed * delta;
+                        c.position.x = Math.cos(data.angle) * config.drumRadius;
+                        c.position.y = Math.sin(data.angle) * config.drumRadius;
+                        
+                        const currentAngle = normalizeAngle(data.angle);
+                        const triggerThreshold = config.drumSpeed * delta;
+
+                        if (data.status === 'on_drum' && Math.abs(currentAngle - config.inspectionAngle) < triggerThreshold) {
+                            data.status = 'inspected';
+                            inspectionCamera.flash.visible = true; 
+                            inspectionStats.total++;
+                            if (data.isDefective) {
+                                c.material = materials.cigarette_defect;
+                            }
+                        }
+
+                        if (data.status === 'inspected' && data.isDefective && Math.abs(currentAngle - config.rejectionAngle) < triggerThreshold) {
+                            data.status = 'rejected';
+                            rejector.piston.position.x = 1.0; 
+                            data.velocity = new THREE.Vector3(5, 2, 0); 
+                            inspectionStats.rejected++;
+                        }
+                        
+                        if (data.status === 'inspected' && !data.isDefective && Math.abs(currentAngle - normalizedDropAngle) < triggerThreshold) {
+                             data.status = 'accepted';
+                             data.velocity = new THREE.Vector3(0, -2, 0); 
+                             inspectionStats.accepted++;
+                        }
+                        break;
+                        
+                    case 'rejected':
+                        c.position.add(data.velocity.clone().multiplyScalar(delta));
+                        data.velocity.y -= 9.8 * delta; 
+                        break;
+                    
+                    case 'accepted':
+                        c.position.add(data.velocity.clone().multiplyScalar(delta));
+                        data.velocity.y -= 9.8 * delta; 
+                        if (c.position.y < okConveyor.position.y + 0.2) {
+                            data.status = 'conveyed';
+                            c.position.y = okConveyor.position.y + 0.2 + config.cigaretteRadius;
+                        }
+                        break;
+
+                    case 'conveyed':
+                        c.position.z -= 5 * delta;
+                        break;
+                }
+            });
+        }
+        
+        function updateStatusDisplay() {
+            totalCountElem.innerText = inspectionStats.total;
+            acceptedCountElem.innerText = inspectionStats.accepted;
+            rejectedCountElem.innerText = inspectionStats.rejected;
+        }
+
+        // --- UTILITY ---
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function normalizeAngle(angle) {
+            return ((angle % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+        }
+
+        init();
+
+    </script>
+</body>
+</html>
+�

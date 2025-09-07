@@ -1,0 +1,153 @@
+{
+  "measurementSlides": [
+    {
+      "title": "Precision Measurement",
+      "description": "Enabling accurate evaluation of critical parameters for items in both online and offline settings.",
+      "features": [
+        "Application Specific Lighting: Front, Back, Edge, Dome, Bar Light, etc",
+        "Application Specific Lenses: Telecentric Lens and FA Lens",
+        "Diameter",
+        "Roundness",
+        "Angle",
+        "Area",
+        "Circularity",
+        "Parallelity",
+        "Thickness (Edge to Edge)",
+        "Width and Height (Point to Point)",
+        "Customised Algorithm for tailored evaluation"
+      ],
+      "images": [
+        "/uploads/measurement/1.jpeg",
+        "/uploads/measurement/1.jpg",
+        "/uploads/measurement/2.jpg",
+        "/uploads/measurement/3.jpg",
+        "/uploads/measurement/4.jpg",
+        "/uploads/measurement/5.jpg"
+      ]
+    }
+  ],
+  "countingSlides": [
+    {
+      "title": "Biscuit Counting",
+      "description": "High-speed AI-based biscuit counting for quality packaging and customer satisfaction.",
+      "features": [
+        "Up to 300 packs per minute",
+        "Stack Length up to 280mm",
+        "Stack width measurement",
+        "Independent of Colour Variations",
+        "24V Rejection Signal",
+        "NG Image Saving Option"
+      ],
+      "image": "/uploads/count/1_biscuit.jpg"
+    },
+    {
+      "title": "Parts Counting System",
+      "description": "High precision part counting with pattern-based identification and line-scan integration.",
+      "features": [
+        "Precision Counting",
+        "Pattern-based Part Counting",
+        "Wide Area Coverage using High-Res Camera",
+        "○ Longer Length Line Scan",
+        "24V Rejection Signal",
+        "NG Image Saving Option"
+      ],
+      "image": "/uploads/count/2_biscuit.jpg"
+    },
+    {
+      "title": "DL Based Part Detection",
+      "description": "Robust real-time classification and counting of mixed items using Deep Learning for industrial applications.",
+      "features": [
+        "Partial Overlap Supported",
+        "Deep Learning Algorithm",
+        "High-Speed Detection",
+        "24V Rejection Signal",
+        "NG Image Saving Option"
+      ],
+      "image": "/uploads/count/3_parts.jpg"
+    },
+    {
+      "title": "Pick and Place System",
+      "description": "Automated pick and place mechanism with vision-guided positioning for accurate object manipulation.",
+      "features": [
+        "Covers 600mm² Area",
+        "Easy Job Configuration and Calibration",
+        "Easy Robot Integration",
+        "Multi-Component Detection",
+        "Multi-Protocol Support",
+        "Multi-Manufacturer Support"
+      ],
+      "image": "/uploads/pic_place/download.jpg"
+    }
+  ],
+  "defectSlides": [
+    {
+      "title": "AI-Based Defect Detection",
+      "description": "Advanced defect detection using deep learning algorithms for comprehensive quality control.",
+      "features": [
+        "Scratch Detection",
+        "Crack Detection",
+        "Surface Defects",
+        "Pattern Anomalies",
+        "Color Variations",
+        "Shape Defects"
+      ],
+      "image": "/uploads/defect_detection/3.jpg"
+    }
+  ],
+  "classificationSlides": [
+    {
+      "title": "DL-Based Classification & Counting",
+      "description": "Robust real-time classification and counting of mixed items using Deep Learning for industrial applications.",
+      "features": [
+        "Partial Overlap Supported",
+        "Deep Learning Based Algorithm",
+        "High-Speed Detection",
+        "24V Rejection Signal",
+        "NG images saving option"
+      ],
+      "image": "/uploads/classification/3.jpg"
+    }
+  ],
+  "ocrSlides": [
+    {
+      "title": "OCR with Deep Learning",
+      "description": "Deep Learning-based OCR for accurate text extraction from complex and variable surfaces.",
+      "features": [
+        "Printed Text Reading",
+        "Printed Alpha-Numerical Code Reading",
+        "Dot Matrix Printed Text Reading",
+        "Stamped Text Reading",
+        "Custom OCR Support"
+      ],
+      "image": "/uploads/OCR/OCR_OCV.jpg"
+    }
+  ],
+  "codeReadingSlides": [
+    {
+      "title": "Code Reading Solutions",
+      "description": "High-speed code reading system supporting 1D, 2D, and custom code formats with robust decoding algorithms.",
+      "features": [
+        "Barcode",
+        "QR Code",
+        "Data Matrix Code",
+        "Pharma Code",
+        "Micro Code",
+        "Multiple Codes in a Single Image"
+      ],
+      "image": "/uploads/code/code-reader.jpg"
+    }
+  ],
+  "hybridSlides": [
+    {
+      "title": "Hybrid AI-Driven Solutions (Cashew Sorting)",
+      "description": "Hybrid AI-driven solutions combining rule-based logic with deep learning for adaptable and high-accuracy automation.",
+      "features": [
+        "Grading and Sorting based on Size, Shape, Colour",
+        "Shell Presence/Absence Detection",
+        "High Speed, High Accuracy",
+        "Optimised for Processing Efficiency"
+      ],
+      "image": "/uploads/hybrid/cashew-sorting.jpg"
+    }
+  ]
+}

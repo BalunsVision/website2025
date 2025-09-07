@@ -1,0 +1,27 @@
+[
+  {
+    "subtitle": "Advanced Machine Vision Technology",
+    "title": "Pioneering AI-Powered Vision Solutions",
+    "description": "At Baluns, we design and deploy advanced Machine Vision Products, integrating traditional techniques and cutting-edge Hybrid AI-based solutions for industrial automation.",
+    "buttons": [
+      {
+        "text": "Get Started",
+        "link": "/products",
+        "variant": "primary"
+      },
+      {
+        "text": "View Our Solutions",
+        "link": "/solutions",
+        "variant": "outline"
+      }
+    ],
+    "media": {
+      "images": ["/uploads/5b0a2014-5f5e-43f5-b2d9-cc50235e60d0.png"],
+      "videos": [
+        "/uploads/Video_Edited_Link_Provided.mp4",
+        "/uploads/Video_Edited_Link_Provided.mp4"
+      ],
+      "htmlFiles": ["/uploads/2.html"]
+    }
+  }
+]

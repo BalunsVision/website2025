@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Measurement",
+    "icon": "Ruler",
+    "bgColor": "bg-orange-primary",
+    "sectionId": "measurement"
+  },
+  {
+    "name": "Counting",
+    "icon": "List",
+    "bgColor": "bg-gray-500",
+    "sectionId": "counting"
+  },
+  {
+    "name": "Classification",
+    "icon": "Grid3X3",
+    "bgColor": "bg-orange-primary",
+    "sectionId": "classification"
+  },
+  {
+    "name": "Pick and Place",
+    "icon": "Hand",
+    "bgColor": "bg-gray-500",
+    "sectionId": "pick-and-place"
+  },
+  {
+    "name": "OCR Code",
+    "icon": "Scan",
+    "bgColor": "bg-orange-primary",
+    "sectionId": "ocr-code"
+  },
+  {
+    "name": "Code Reading",
+    "icon": "Barcode",
+    "bgColor": "bg-gray-500",
+    "sectionId": "code-reading"
+  },
+  {
+    "name": "Hybrid AI-Driven Solutions",
+    "icon": "Brain",
+    "bgColor": "bg-orange-primary",
+    "sectionId": "hybrid-ai"
+  }
+]

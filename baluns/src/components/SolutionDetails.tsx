@@ -1,0 +1,265 @@
+import { useState, useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselApi,
+} from "@/components/ui/carousel";
+import rawData from "@/data/solution_details.json";
+import solutionCategories from "@/data/solution_categories.json";
+
+// --- Slide type updated for new media format ---
+interface Slide {
+  title: string;
+  description: string;
+  features: string[];
+  media: {
+    images: string[];
+    videos: string[];
+    htmlFiles: string[];
+  };
+  background?: string;
+  globalIndex?: number;
+}
+interface SectionProps {
+  id: string;
+  slides: Slide[];
+}
+
+// --- Dynamically generate sections ---
+const solutionSections = solutionCategories
+  .map((category) => {
+    const slidesKey = Object.keys(rawData).find((key) => {
+      const normalizedId = category.sectionId.toLowerCase().replace(/-/g, "");
+      const normalizedKey = key.toLowerCase().replace(/slides$/, "");
+      return normalizedKey.includes(normalizedId) || normalizedId.includes(normalizedKey);
+    });
+
+    if (!slidesKey) return null;
+
+    return {
+      id: category.sectionId,
+      slides: (rawData as any)[slidesKey] as Slide[],
+    };
+  })
+  .filter(Boolean);
+
+// --- Helper to render media ---
+function renderMedia(slide: Slide) {
+  const sources = [
+    ...slide.media.images.map((src) => ({ type: "image", src })),
+    ...slide.media.videos.map((src) => ({ type: "video", src })),
+    ...slide.media.htmlFiles.map((src) => ({ type: "html", src })),
+  ];
+
+  if (sources.length > 1) {
+    return <InnerAutoCarousel sources={sources} title={slide.title} />;
+  }
+
+  if (sources.length === 1) {
+    const { type, src } = sources[0];
+    return (
+      <div className="flex items-center justify-center w-full h-full rounded-lg">
+        {renderSingle(type, src, slide.title)}
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center justify-center w-full h-full text-gray-700">
+      No media available
+    </div>
+  );
+}
+
+function renderSingle(type: string, src: string, title: string, idx?: number) {
+  if (type === "image") {
+    return (
+      <img
+        src={src}
+        alt={title}
+        className="w-full h-[500px] rounded-lg"
+      />
+    );
+  }
+  if (type === "video") {
+    return (
+      <div className="w-full h-[500px] rounded-lg overflow-hidden bg-black">
+        <video
+          src={src}
+          className="w-full h-full object-fill"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      </div>
+
+
+    );
+  }
+  return (
+    <iframe
+      src={src}
+      title={`${title}-${idx ?? 0}`}
+      className="w-full h-[500px] overflow-hidden rounded-lg"
+    />
+  );
+}
+
+// --- Inner carousel for multiple media items ---
+const InnerAutoCarousel: React.FC<{ sources: { type: string; src: string }[]; title: string }> = ({ sources, title }) => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [count, setCount] = useState(0);
+  const intervalRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+
+    const start = () => (intervalRef.current = setInterval(() => api.scrollNext(), 3000));
+    const stop = () => clearInterval(intervalRef.current);
+
+    start();
+    const root = api.rootNode();
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+
+    return () => {
+      stop();
+      root.removeEventListener("mouseenter", stop);
+      root.removeEventListener("mouseleave", start);
+    };
+  }, [api]);
+
+  return (
+    <Carousel setApi={setApi} opts={{ loop: true }} className="w-full h-full relative group overflow-hidden rounded-lg">
+      <CarouselContent className="h-full">
+        {sources.map(({ type, src }, i) => (
+          <CarouselItem key={i} className="h-full">
+            <div className="flex items-center justify-center w-full h-full">
+              {renderSingle(type, src, title, i)}
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+
+      {count > 1 && (
+        <>
+          <CarouselPrevious className="absolute left-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 bg-black/40 text-white rounded-full p-2 mt-1" />
+          <CarouselNext className="absolute right-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 bg-black/40 text-white rounded-full p-2 mt-1" />
+        </>
+      )}
+    </Carousel>
+  );
+};
+// --- Outer section carousel ---
+const SliderSection: React.FC<SectionProps> = ({ id, slides }) => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+  }, [api]);
+
+  return (
+    <section id={id} className="pt-6 sm:pt-8 lg:pt-8 pb-0 bg-white">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-6">
+        <div className="relative group">
+          <Carousel setApi={setApi} opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent>
+              {slides.map((slide) => {
+                const isEven = (slide.globalIndex ?? 0) % 2 === 0; // 👈 true alternation across all
+
+                return (
+                  <CarouselItem key={slide.globalIndex}>
+                    <div
+                      className="relative text-white rounded-xl overflow-hidden shadow-2xl bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url(${slide.background || slide.media.images[0] || ""})`,
+                      }}
+                    >
+                      <div
+                        className={`flex flex-col lg:flex-row min-h-[650px] items-stretch ${
+                          isEven ? "" : "lg:flex-row-reverse"
+                        }`}
+                      >
+                        {/* Media */}
+                        <div
+                          className={`w-full lg:w-1/2 flex items-stretch justify-center p-6 sm:p-8 h-full mt-10 
+                            ${isEven ? "lg:pr-12" : "lg:pl-12"}`}
+                        >
+                          <div className="w-full h-full flex items-center justify-center">
+                            {renderMedia(slide)}
+                          </div>
+                        </div>
+
+                        {/* Text */}
+                        <div
+                          className={`w-full lg:w-1/2 p-6 sm:p-8 xl:p-16 flex flex-col justify-center 
+                            ${isEven ? "lg:pl-12" : "lg:pr-12"}`}
+                        >
+                          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-orange-primary leading-tight">
+                            {slide.title}
+                          </h2>
+                          <p className="text-sm sm:text-base lg:text-lg mb-6 sm:mb-10 opacity-90 leading-relaxed">
+                            {slide.description}
+                          </p>
+                          <div className="space-y-2 mb-6 sm:mb-10">
+                            {slide.features.map((f, i) => (
+                              <div key={i} className="flex items-center text-sm sm:text-base">
+                                <span className="w-2 h-2 bg-orange-primary rounded-full mr-3"></span>
+                                {f}
+                              </div>
+                            ))}
+                          </div>
+                          <Button className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg">
+                            GET IN TOUCH
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            {count > 1 && (
+              <>
+                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 bg-black/40 text-white rounded-full p-2" />
+                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 bg-black/40 text-white rounded-full p-2" />
+              </>
+            )}
+          </Carousel>
+        </div>
+      </div>
+    </section>
+  );
+};
+export default function SolutionDetails() {
+  // flatten index across all sections
+  let globalCounter = 0;
+
+  return (
+    <div>
+      {solutionSections.map((section) => {
+        const slidesWithIndex = section.slides.map((slide) => ({
+          ...slide,
+          globalIndex: globalCounter++, // 👈 always increments
+        }));
+
+        return (
+          <SliderSection
+            key={section.id}
+            id={section.id}
+            slides={slidesWithIndex}
+          />
+        );
+      })}
+    </div>
+  );
+}

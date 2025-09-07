@@ -1,0 +1,174 @@
+{
+  "measurementSlides": [
+    {
+      "title": "Precision Measurement",
+      "description": "Enabling accurate evaluation of critical parameters for items in both online and offline settings.",
+      "features": [
+        "Application Specific Lighting: Front, Back, Edge, Dome, Bar Light, etc.",
+        "Application Specific Lenses: Telecentric Lens and FA Lens",
+        "Diameter",
+        "Roundness",
+        "Angle",
+        "Area",
+        "Circularity",
+        "Parallelity",
+        "Thickness (Edge to Edge)",
+        "Width and Height (Point to Point)",
+        "Customised Algorithm for tailored evaluation"
+      ],
+      "media": {
+        "images": [
+          "/uploads/measurement/1.jpeg",
+          "/uploads/measurement/1.jpg",
+          "/uploads/measurement/2.jpg",
+          "/uploads/measurement/3.jpg",
+          "/uploads/measurement/4.jpg",
+          "/uploads/measurement/5.jpg"
+        ],
+        "videos": [],
+        "htmlFiles": []
+      },
+      "background": "/uploads/group-1000001855.png"
+    }
+  ],
+  "countingSlides": [
+    {
+      "title": "Biscuit Counting",
+      "description": "Accurate item counting using vision-based systems tailored for high-speed production lines.",
+      "features": [
+        "Up to 300 packs per minute",
+        "Stack Length up to 280mm",
+        "Stack width measurement",
+        "Independent of Colour Variations",
+        "24V Rejection Signal",
+        "NG Image Saving Option"
+      ],
+      "media": {
+        "images": [],
+        "videos": [
+          "/uploads/Video_Edited_Link_Provided.mp4",
+          "/uploads/Video_Edited_Link_Provided.mp4"
+        ],
+        "htmlFiles": ["/uploads/2.html"]
+      },
+      "background": "/uploads/group-1000001854.png"
+    },
+    {
+      "title": "Parts Counting System",
+      "description": "High precision part counting with pattern-based identification and line-scan integration.",
+      "features": [
+        "Precision Counting",
+        "Pattern-based Part Counting",
+        "Wide Area Coverage using High-Res Camera",
+        "Longer Length Line Scan",
+        "24V Rejection Signal",
+        "NG Image Saving Option"
+      ],
+      "media": {
+        "images": [
+          "/uploads/count/2_biscuit.jpg",
+          "/uploads/count/2_biscuit.jpg"
+        ],
+        "videos": [],
+        "htmlFiles": []
+      },
+      "background": "/uploads/group-1000001855.png"
+    }
+  ],
+  "classificationSlides": [
+    {
+      "title": "DL-Based Classification & Counting",
+      "description": "Robust real-time classification and counting of mixed items using Deep Learning for industrial applications.",
+      "features": [
+        "Partial Overlap Supported",
+        "Deep Learning Based Algorithm",
+        "High-Speed Detection",
+        "24V Rejection Signal",
+        "NG Image Saving Option"
+      ],
+      "media": {
+        "images": ["/uploads/classification/3.jpg"],
+        "videos": [],
+        "htmlFiles": []
+      },
+      "background": "/uploads/group-1000001854.png"
+    }
+  ],
+  "pickAndPlaceSlides": [
+    {
+      "title": "Pick and Place System",
+      "description": "Automated pick and place mechanism with vision-guided positioning for accurate object manipulation.",
+      "features": [
+        "Covers 600mm² Area",
+        "Easy Job Configuration and Calibration",
+        "Easy Robot Integration",
+        "Multi-Component Detection",
+        "Multi-Protocol Support",
+        "Multi-Manufacturer Support"
+      ],
+      "media": {
+        "images": ["/uploads/pic_place/download.jpg"],
+        "videos": [],
+        "htmlFiles": []
+      },
+      "background": "/uploads/group-1000001855.png"
+    }
+  ],
+  "ocrSlides": [
+    {
+      "title": "OCR with Deep Learning",
+      "description": "Deep Learning-based OCR for accurate text extraction from complex and variable surfaces.",
+      "features": [
+        "Printed Text Reading",
+        "Printed Alpha-Numerical Code Reading",
+        "Dot Matrix Printed Text Reading",
+        "Stamped Text Reading",
+        "Custom OCR Support"
+      ],
+      "media": {
+        "images": ["/uploads/OCR/OCR_OCV.jpg"],
+        "videos": [],
+        "htmlFiles": []
+      },
+      "background": "/uploads/group-1000001854.png"
+    }
+  ],
+  "codeReadingSlides": [
+    {
+      "title": "Code Reading Solutions",
+      "description": "High-speed code reading system supporting 1D, 2D, and custom code formats with robust decoding algorithms.",
+      "features": [
+        "Barcode",
+        "QR Code",
+        "Data Matrix Code",
+        "Pharma Code",
+        "Micro Code",
+        "Multiple Codes in a Single Image"
+      ],
+      "media": {
+        "images": ["/uploads/code/code-reader.jpg"],
+        "videos": [],
+        "htmlFiles": []
+      },
+      "background": "/uploads/group-1000001855.png"
+    }
+  ],
+  "hybridSlides": [
+    {
+      "title": "Hybrid AI-Driven Solutions (Cashew Sorting)",
+      "description": "Hybrid AI-driven solutions combining rule-based logic with deep learning for adaptable and high-accuracy automation.",
+      "features": [
+        "Grading and Sorting based on Size, Shape, Colour",
+        "Shell Presence/Absence Detection",
+        "High Speed, High Accuracy",
+        "Optimised for Processing Efficiency"
+      ],
+      "media": {
+        "images": ["/uploads/hybrid/cashew-sorting.jpg"],
+        "videos": ["/uploads/Video_Edited_Link_Provided.mp4"],
+        "htmlFiles": []
+      },
+      "background": "/uploads/group-1000001854.png"
+    }
+  ]
+}
