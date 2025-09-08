@@ -32,27 +32,7 @@
     }
   ],
   "countingSlides": [
-    {
-      "title": "Biscuit Counting",
-      "description": "Accurate item counting using vision-based systems tailored for high-speed production lines.",
-      "features": [
-        "Up to 300 packs per minute",
-        "Stack Length up to 280mm",
-        "Stack width measurement",
-        "Independent of Colour Variations",
-        "24V Rejection Signal",
-        "NG Image Saving Option"
-      ],
-      "media": {
-        "images": [],
-        "videos": [
-          "/uploads/Video_Edited_Link_Provided.mp4",
-          "/uploads/Video_Edited_Link_Provided.mp4"
-        ],
-        "htmlFiles": ["/uploads/2.html"]
-      },
-      "background": "/uploads/group-1000001854.png"
-    },
+
     {
       "title": "Parts Counting System",
       "description": "High precision part counting with pattern-based identification and line-scan integration.",
@@ -66,13 +46,36 @@
       ],
       "media": {
         "images": [
-          "/uploads/count/2_biscuit.jpg",
-          "/uploads/count/2_biscuit.jpg"
+          "/uploads/count/1_part.jpg",
+          "/uploads/count/2_part.jpg"
         ],
         "videos": [],
         "htmlFiles": []
       },
       "background": "/uploads/group-1000001855.png"
+    },
+      {
+      "title": "Biscuit Counting",
+      "description": "Accurate item counting using vision-based systems tailored for high-speed production lines.",
+      "features": [
+        "Up to 300 packs per minute",
+        "Stack Length up to 280mm",
+        "Stack width measurement",
+        "Independent of Colour Variations",
+        "24V Rejection Signal",
+        "NG Image Saving Option"
+      ],
+      "media": {
+        "images": ["/uploads/count/1_biscuit.jpg"
+                  ],
+        "videos": [
+          "/uploads/count/3_biscuit.mp4",
+          "/uploads/count/biscuit_count.mp4"
+        ],
+        
+        "htmlFiles": []
+      },
+      "background": "/uploads/group-1000001854.png"
     }
   ],
   "classificationSlides": [
@@ -87,7 +90,9 @@
         "NG Image Saving Option"
       ],
       "media": {
-        "images": ["/uploads/classification/3.jpg"],
+        "images": ["/uploads/classification/1.jpg",
+                "/uploads/classification/2.jpg",
+                "/uploads/classification/3.jpg"],
         "videos": [],
         "htmlFiles": []
       },
@@ -107,8 +112,9 @@
         "Multi-Manufacturer Support"
       ],
       "media": {
-        "images": ["/uploads/pic_place/download.jpg"],
-        "videos": [],
+        "images": [],
+        "videos": ["/uploads/pick_place/pick_place.mp4",
+                  "/uploads/pick_place/pick_place1.mp4"],
         "htmlFiles": []
       },
       "background": "/uploads/group-1000001855.png"
