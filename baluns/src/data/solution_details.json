@@ -165,6 +165,27 @@
     }
   ],
   "hybridSlides": [
+
+    {
+      "title": "Braile Validation Check",
+      "description": "Hybrid AI-driven solutions combining rule-based logic with deep learning for adaptable and high-accuracy automation.",
+      "features": [
+          "Missing Braille Dot Check",
+          "Pattern Mismatch Check",
+          "Malformed Braille Dots Check",
+          "Up to 300 metres per minute",
+          "Line Scan Camera Based",
+          "Interactive GUI - Easy Configuration",
+          "24V Rejection Signal",
+          "NG images saving option"
+      ],
+      "media": {
+        "images": [],
+        "videos": ["/uploads/hybrid/braile_1.mp4"],
+        "htmlFiles": []
+      },
+      "background": "/uploads/group-1000001854.png"
+    },
     {
       "title": "Hybrid AI-Driven Solutions (Cashew Sorting)",
       "description": "Hybrid AI-driven solutions combining rule-based logic with deep learning for adaptable and high-accuracy automation.",
@@ -172,11 +193,13 @@
         "Grading and Sorting based on Size, Shape, Colour",
         "Shell Presence/Absence Detection",
         "High Speed, High Accuracy",
-        "Optimised for Processing Efficiency"
+        "Optimised for Processing Efficiency"        
+
       ],
       "media": {
-        "images": ["/uploads/hybrid/cashew-sorting.jpg"],
-        "videos": ["/uploads/Video_Edited_Link_Provided.mp4"],
+        "images": ["/uploads/hybrid/cashew_1.jpg",
+                    "/uploads/hybrid/cashew_2.jpg"],
+        "videos": [],
         "htmlFiles": []
       },
       "background": "/uploads/group-1000001854.png"
