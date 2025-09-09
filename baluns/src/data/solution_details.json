@@ -132,9 +132,12 @@
         "Custom OCR Support"
       ],
       "media": {
-        "images": ["/uploads/OCR/OCR_OCV.jpg"],
-        "videos": [],
-        "htmlFiles": []
+        "images": ["/uploads/OCR/1_ocr.jpeg",
+                   "/uploads/OCR/2_ocr.jpeg",
+                   "/uploads/OCR/3_ocr.jpeg",
+                   "/uploads/OCR/4_ocr.jpeg"],
+        "videos": ["/uploads/OCR/RWF_OCR.mp4"],
+        "htmlFiles": ["/uploads/OCR/OCR.html"]
       },
       "background": "/uploads/group-1000001854.png"
     }
@@ -152,8 +155,10 @@
         "Multiple Codes in a Single Image"
       ],
       "media": {
-        "images": ["/uploads/code/code-reader.jpg"],
-        "videos": [],
+        "images": ["/uploads/code/1.jpg",
+                  "/uploads/code/2.jpg",
+                  "/uploads/code/3.PNG"],
+        "videos": ["/uploads/code/Pack barcode.mp4"],
         "htmlFiles": []
       },
       "background": "/uploads/group-1000001855.png"
