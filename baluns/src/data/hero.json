@@ -17,11 +17,11 @@
     ],
     "media": {
       "videos": [
-        "/uploads/Home_1.mp4",
-        "/uploads/Video_Edited_Link_Provided.mp4"
+        "/uploads/home/Home_1.mp4",
+        "/uploads/home/Video_Edited_Link_Provided.mp4"
       ],
-      "images": ["/uploads/home.png",
-                 "/uploads/main.jpg"],
+      "images": ["/uploads/home/home.png",
+                 "/uploads/home/main.jpg"],
 
       "htmlFiles": []
     }

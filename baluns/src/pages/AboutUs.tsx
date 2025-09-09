@@ -28,12 +28,32 @@ const AboutUs = () => {
   ];
 
   const missionPoints = [
-    'Sustainable Manufacturing Practices',
-    'Advanced Technology Integration',
-    'Community and Environmental Responsibility',
-    'Innovation-Driven Growth'
+    'Smart Camera & Machine Vision System Design',
+    'AI for Defect Detection & Quality Inspection',
+    'Real-Time Edge Computing Solutions',
+    'Robotic Vision System Integration',
+    'Automation Strategy for Industry 4.0'
+  ];
+  const awards = [
+    '🏆 I3 Innovation Award – Advanced PCT Vision Inspection System (ITC Tobacco)',
+    '🏆 Best Partner Award – Pristine Project Development (Remidio)Smart Camera & Machine Vision System Design'
+  ];
+  const ourvalue = [
+    'Integrity in every partnership and process',
+    'Excellence in Service through innovation and commitment',
+    'Customer-Centric Innovation that addresses unique industry need'
   ];
 
+ const whatwedo = [
+    'AI for Manufacturing & Quality Control',
+    'Machine Vision Systems & Smart Camera Development',
+    'Embedded Systems & Edge Computing',
+    'Industrial Automation & Robotics Integration',
+    'Print Quality Inspection, OCR, and Barcode Reading',
+    'Vision-Guided Robotics for Pick-and-Place Applications'
+  ];
+                
+               
   return (
     <div className="min-h-screen">
       <Header />
@@ -42,22 +62,40 @@ const AboutUs = () => {
       <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-6">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
-                AboutUs
+                Baluns Vision Technologies Pvt. Ltd.
+
               </h1>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className='mb-20'>
               <h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 mb-6">
-                Our Story
+                 Intelligent Vision Solutions for Industrial Automation
               </h2>
               <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-                Baluns is an employee-centred company that looks after every
-                employee, gives autonomy to make choices, supports self-development
-                and career growth. Our development team is always in search of
-                talented individuals to join our employee-centred culture.
+                Founded in 2019, Baluns Vision Technologies Pvt. Ltd. specializes in designing and building intelligent machine vision systems and smart cameras tailored for industrial automation. Established by Amutha and Saravanakumar, our company is powered by deep technical expertise in embedded systems, image processing, AI, and hardware engineering.
+We are passionate about solving complex, real-world manufacturing challenges using advanced technologies. Our commitment is to deliver solutions that make modern manufacturing smarter, more efficient, and highly reliable.
               </p>
-              <p className="text-gray-600 mb-8">
-                Navigate below to see our current open positions!
-              </p>
+              <h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 mb-6">
+                 Our Values
+              </h2>
+               <div className="space-y-3">
+                {ourvalue.map((point, index) => (
+                  <div key={index} className="flex items-center">
+                    <div className="w-2 h-2 bg-black rounded-full mr-3"></div>
+                    <span className="text-black/90">{point}</span>
+                  </div>
+                ))}
+              </div>
+              <h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 mb-6">
+                 What we do
+              </h2>
+               <div className="space-y-3">
+                {whatwedo.map((point, index) => (
+                  <div key={index} className="flex items-center">
+                    <div className="w-2 h-2 bg-black rounded-full mr-3"></div>
+                    <span className="text-black/90">{point}</span>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="relative">
               <img
@@ -70,11 +108,11 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Mission and Vision Section */}
+      {/* Key Focus Areas Section */}
       <section className="bg-gray-600 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Our Mission */}
+            {/* Key Focus Areas */}
             <div className="bg-orange-primary rounded-2xl p-8 text-white">
               <div className="flex items-center mb-6">
                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-3">
@@ -82,12 +120,11 @@ const AboutUs = () => {
                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold">Our Mission</h3>
+                <h3 className="text-2xl font-bold">Key Focus Areas</h3>
               </div>
               <p className="text-white/90 mb-6 leading-relaxed">
-                Our mission is to transform the factory and industry sectors through
-                sustainable practices, innovation, and advanced technology, fostering
-                growth that benefits both business and the environment.
+                
+
               </p>
               <div className="space-y-3">
                 {missionPoints.map((point, index) => (
@@ -99,7 +136,7 @@ const AboutUs = () => {
               </div>
             </div>
 
-            {/* Our Vision */}
+            {/* Awards & Recognition */}
             <div className="bg-white rounded-2xl p-8 relative overflow-hidden">
               <div className="flex items-center mb-6">
                 <div className="w-8 h-8 bg-orange-primary rounded-full flex items-center justify-center mr-3">
@@ -108,7 +145,7 @@ const AboutUs = () => {
                     <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Our Vision</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Awards & Recognition</h3>
               </div>
               <div className="absolute top-8 right-8 w-64 h-40">
                 <img
@@ -119,10 +156,16 @@ const AboutUs = () => {
               </div>
               <div className="pr-72">
                 <p className="text-gray-600 leading-relaxed">
-                  To be the leading force in industrial transformation, creating
-                  sustainable solutions that drive innovation and environmental
-                  responsibility across global markets.
+                  We’re proud to have earned industry recognition for our technical depth and innovation:
                 </p>
+                <div className="space-y-3">
+                {awards.map((point, index) => (
+                  <div key={index} className="flex items-center">
+                    <div className="w-2 h-2 bg-black rounded-full mr-3"></div>
+                    <span className="text-black/90">{point}</span>
+                  </div>
+                ))}
+              </div>
               </div>
             </div>
           </div>

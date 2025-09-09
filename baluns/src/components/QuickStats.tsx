@@ -1,7 +1,7 @@
 const QuickStats = () => {
   const stats = [
     {
-      number: "50+",
+      number: "100+",
       label: "Projects Delivered",
       description: "Go-to partner for highly complex, customized projects – trusted by repeat customers"
     },

@@ -6,19 +6,19 @@ const FeatureTeasers = () => {
     {
       title: "Product Suite",
       description: "Industrial cameras and vision systems designed for precision and reliability across diverse industrial applications.",
-      image: "/uploads/98354657-8bb2-454e-820c-d6168b4ba677.png",
+      image: "/uploads/home/Home_2.png",
       link: "/products"
     },
     {
       title: "Solution & Projects", 
       description: "Custom AI-powered vision solutions for Printing, Packaging, Pharmaceutical, Automotive, Food Processing, and Textiles.",
-      image: "/uploads/Home_3.jpeg",
+      image: "/uploads/home/Home_3.jpeg",
       link: "/solutions"
     },
     {
       title: "Shop",
       description: "Browse our complete range of machine vision products and accessories for your industrial automation needs.",
-      image: "/uploads/Home_4.jpeg", 
+      image: "/uploads/home/Home_4.jpeg", 
       link: "/products"
     }
   ];
