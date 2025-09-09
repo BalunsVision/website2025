@@ -2,94 +2,115 @@
   {
     "id": "mould-tool",
     "title": "Mould Tool Inspection System",
-    "subtitle": "Ensuring each mold meets precise quality standards.",
+    "subtitle": "An advanced vision-based solution designed to ensure mould cavities are correctly filled and free from defects before the production cycle continues. Built for speed, accuracy, and reliability in demanding manufacturing environments.",
     "media": {
-      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
+      "images": ["/uploads/product/mold/1.JPG","/uploads/product/mold/2.JPG"],
       "videos": [
-        "/uploads/Video_Edited_Link_Provided.mp4",
-        "/uploads/Video_Edited_Link_Provided.mp4"
+        "/uploads/product/mold/mold_1.mp4",
+        "/uploads/product/mold/mold_2.mp4"
       ],
       "htmlFiles": []
     },
     "background": "/uploads/group-1000001855.png",
     "sections": [
       {
-        "title": "Precision Mould Checking",
-        "description": "Ensures each mould is manufactured to exact specifications, reducing defects in final products.",
-        "features": []
+        "title": "Key Features",
+        "description": "",
+        "features": ["Component Presence Verification – Confirms each mould cycle contains the required part before proceeding",
+                      "Defect & Residue Detection – Identifies broken parts and leftover runners in the cavity to prevent defective production",
+                      "Single-Click Training – Fast setup with minimal user input for quick deployment",
+                      "24/7 Operational Capability – Designed for continuous, around-the-clock production environments",
+                      "Optimised Lighting for Reflective Surfaces – Advanced imaging overcomes challenges with shiny or polished moulds",
+                      "Fail-Proof Detection – Minimises false negatives and process errors for maximum reliability",
+                      "Damage & Downtime Prevention – Early detection helps avoid costly mould repairs and reduces production delays"]
       }
     ]
   },
   {
     "id": "roundness-tester",
     "title": "Capsule Roundness Tester",
-    "subtitle": "Advanced optical inspection system for testing flavour capsules of cigarettes on a sampling basis.",
+    "subtitle": "An advanced optical inspection system for testing flavour capsules used in cigarettes on a sampling basis, ensuring dimensional accuracy and quality.",
     "media": {
-      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
-      "videos": ["/uploads/2.mp4"],
+      "images": ["/uploads/product/capsule/home.jpg",
+                  "/uploads/product/capsule/1.jpg",
+                  "/uploads/product/capsule/2.jpg",
+                "/uploads/product/capsule/3.jpg",
+              "/uploads/product/capsule/4.jpg",
+            "/uploads/product/capsule/5.jpg"],
+      "videos": [],
       "htmlFiles": []
     },
     "background": "/uploads/group-1000001854.png",
     "sections": [
       {
-        "title": "Sampling Capacity",
-        "description": "Can measure up to 20 capsules in a single instance.",
-        "features": []
+        "title": "Capabilities",
+        "description": "",
+        "features": ["Can measure up to 20 capsules in a single instance",
+                    "Measures up to 20 capsules in a single instance",
+                   "Compatible with capsules of various colours."]
       },
       {
-        "title": "Precise Measurement",
-        "description": "Provides accurate roundness measurements.",
-        "features": []
-      },
-      {
-        "title": "Colour Compatibility",
-        "description": "Compatible with capsules of various colours.",
-        "features": []
+        "title": "Parameters measured:",
+        "description": "",
+        "features": ["Roundness",
+                      "Minimum & Maximum Diameter",
+                      "Mean & Standard Deviation",
+                      "Wall Thickness & Air Bubbles (for wet capsules)",
+                      "Compatible with various capsule colours",
+                      "Data Analysis & Report Logging – Integrated database and reporting interface",
+                      "Complete Parameter Control – Job configuration for multiple capsule sizes"]
       }
     ]
   },
   {
     "id": "label-inspection",
     "title": "Label Inspection System",
-    "subtitle": "High-precision label quality inspection system for production lines.",
+    "subtitle": "A 100% web inspection solution for high-speed printing and labelling quality assurance across various printing technologies.",
     "media": {
-      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
-      "videos": ["/uploads/3.mp4"],
+      "images": ["/uploads/product/label/main.PNG"],
+      "videos": ["/uploads/product/label/label_1.mp4","/uploads/product/label/label_2.mp4"],
       "htmlFiles": []
     },
     "background": "/uploads/group-1000001855.png",
     "sections": [
       {
-        "title": "High-Speed Label Inspection",
-        "description": "Ensures printed labels meet design and positioning requirements without slowing production.",
-        "features": []
+        "title": "Defects Detected:",
+        "description": "",
+        "features": ["Missing characters/logo print errors",
+                    "Soiling, splashes, smears",
+                    "Missing labels or an unremoved matrix",
+                    "Die-cutting misalignment",
+                    "Colour variations (>20%)",
+                    "Damage & holes",
+                    "Label wrinkling"
+                    ]
       },
       {
-        "title": "Defect Detection",
-        "description": "Identifies misaligned, damaged, or missing labels in real-time.",
-        "features": []
-      },
-      {
-        "title": "Data Logging",
-        "description": "Logs inspection results for traceability and quality control.",
-        "features": []
+        "title": "Key Features:",
+        "description": "",
+        "features": ["Inspection area: 50mm – 400mm",
+                      "Speed: Up to 150 meters/min",
+                      "Supports both area scan and line scan cameras",
+                      "Supports: Roll-to-roll printing, Discrete carton printing, Sheet-form printing, Screen printing, Flexo, CTP Plate, and Rotogravure technologies",
+                      "Data Loging and Report generation"]
       }
     ]
   },
   {
     "id": "advanced-pct",
     "title": "Advanced PCT Inspection System",
-    "subtitle": "A next-generation solution for ultra-fast and accurate PCT Inspection engineered for speed, precision, and reliability in cigarette manufacturing.",
+    "subtitle": "A next-generation solution for ultra-fast and accurate PCT inspection, engineered for speed, precision, and reliability in cigarette manufacturing.",
     "media": {
-      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
-      "videos": [],
-      "htmlFiles": ["/uploads/2.html"]
+      "images": ["/uploads/product/pct/main.PNG",
+                  "/uploads/product/pct/Home.jpeg"],
+      "videos": ["/uploads/product/pct/pct.mp4"],
+      "htmlFiles": ["/uploads/product/pct/PCT.html"]
     },
     "background": "/uploads/group-1000001854.png",
     "sections": [
       {
-        "title": "Custom Algorithm for Defect Detection",
-        "description": "Proprietary image processing algorithms ensure accurate inspection even at maximum speed. Following defects can be identified:",
+        "title": "Defects Detected:",
+        "description": "Proprietary image processing algorithms ensure accurate inspection even at maximum speed.",
         "features": [
           "Wander",
           "Skewness",
@@ -99,61 +120,36 @@
         ]
       },
       {
-        "title": "Ultra High Speed Performance",
-        "description": "Inspects up to 12,000 units per minute in production, with lab-tested capability reaching 18,000 units/minute.",
-        "features": []
-      },
-      {
-        "title": "Versatile PCT Type Support",
-        "description": "Supports multiple types of PCT for reliable results.",
-        "features": ["White on White", "Brown on White", "Black on White"]
-      },
-      {
-        "title": "Easy to Configure",
-        "description": "Configure under 5 minutes with minimal setup.",
-        "features": []
-      },
-      {
-        "title": "Universal Mounting System",
-        "description": "Flexible integration with existing production lines.",
-        "features": []
-      },
-      {
-        "title": "Interactive Real-Time GUI",
-        "description": "Modify inspection settings and parameters with an intuitive user interface.",
-        "features": []
-      },
-      {
-        "title": "NG Image Logging",
-        "description": "Logs defective images for up to 3 months for review and quality control.",
-        "features": []
-      },
-      {
-        "title": "SAP Integration Ready",
-        "description": "Seamless data exchange and production analytics for manufacturing.",
-        "features": []
-      },
-      {
-        "title": "Beckhoff Industrial IPC",
-        "description": "Rugged and reliable industrial-grade hardware for 24/7 operation.",
-        "features": []
+        "title": "Key Features:",
+        "description": "",
+        "features": ["Ultra High-Speed Performance – Handles up to 12,000 units per minute.",
+                      "Versatile PCT Type Support – White on White, Brown on White, Black on White.",
+                      "Quick Configuration – Set up in under 5 minutes.",
+                      "Universal Mounting System – Flexible installation in production lines.",
+                      "Interactive Real-Time GUI – Modify inspection parameters with an intuitive interface.",
+                      "NG Image Logging – Stores defective images for up to 3 months for quality review.",
+                      "SAP Integration Ready – Enables seamless data exchange and production analytics.",
+                      "Beckhoff Industrial IPC – Rugged, reliable industrial-grade computing for 24/7 operation."]
       }
+      
     ]
   },
   {
     "id": "wet-capsule",
     "title": "Online Wet Capsule Inspection System",
-    "subtitle": "Advanced vision-based inspection system using deep learning and hybrid image analysis to detect improper capsule formation during production. This system helps reduce manual inspection, improve consistency during production, and prevent defective products from reaching the market.",
+    "subtitle": "An advanced vision-based inspection solution using deep learning and hybrid image analysis to detect capsule formation defects during production. Reduces manual inspection, improves consistency, and prevents defective products from reaching the market",
     "media": {
-      "images": ["/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"],
+      "images": ["/uploads/product/onlinewet/main.PNG",
+                  "/uploads/product/onlinewet/1.PNG",
+                "/uploads/product/onlinewet/2.PNG"],
       "videos": [],
-      "htmlFiles": ["/uploads/2.html"]
+      "htmlFiles": ["/uploads/product/onlinewet/wetcapusle.html"]
     },
     "background": "/uploads/group-1000001855.png",
     "sections": [
       {
         "title": "Various Defects Detected",
-        "description": "Detects multiple defects during production:",
+        "description": "",
         "features": [
           "Satellite / Tail Formation",
           "Oversized or Undersized Capsules",
@@ -165,30 +161,15 @@
         ]
       },
       {
-        "title": "High Precision Camera",
-        "description": "Detects up to 80 micron defects with precision optics.",
-        "features": []
-      },
-      {
-        "title": "Hybrid-AI Algorithm",
-        "description": "Analyses capsules using deep learning and hybrid image analysis for unmatched accuracy.",
-        "features": []
-      },
-      {
-        "title": "Interactive GUI",
-        "description": "Modify inspection settings and parameters with an intuitive interface.",
-        "features": []
-      },
-      {
-        "title": "User-Friendly",
-        "description": "Easy to configure and switch jobs quickly.",
-        "features": []
-      },
-      {
-        "title": "Daily Report Generation",
-        "description": "Automatically generates daily inspection reports.",
-        "features": []
+        "title": "Key Features",
+        "description": "",
+        "features": ["High-Precision Camera – Detects defects as small as 80 microns.",
+                      "Hybrid AI Algorithm – Ensures accurate defect classification.",
+                      "Interactive GUI – Adjust inspection settings easily.",
+                      "User-Friendly Setup – Configure and switch jobs quickly.",
+                      "Daily Report Generation – Automated quality reporting for production analysis."]
       }
+      
     ]
   }
 ]

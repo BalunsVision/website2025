@@ -18,12 +18,12 @@
       ],
       "media": {
         "images": [
-          "/uploads/measurement/1.jpeg",
-          "/uploads/measurement/1.jpg",
-          "/uploads/measurement/2.jpg",
-          "/uploads/measurement/3.jpg",
-          "/uploads/measurement/4.jpg",
-          "/uploads/measurement/5.jpg"
+          "/uploads/solutions/measurement/1.jpeg",
+          "/uploads/solutions/measurement/1.jpg",
+          "/uploads/solutions/measurement/2.jpg",
+          "/uploads/solutions/measurement/3.jpg",
+          "/uploads/solutions/measurement/4.jpg",
+          "/uploads/solutions/measurement/5.jpg"
         ],
         "videos": [],
         "htmlFiles": []
@@ -46,8 +46,8 @@
       ],
       "media": {
         "images": [
-          "/uploads/count/1_part.jpg",
-          "/uploads/count/2_part.jpg"
+          "/uploads/solutions/count/1_part.jpg",
+          "/uploads/solutions/count/2_part.jpg"
         ],
         "videos": [],
         "htmlFiles": []
@@ -66,11 +66,11 @@
         "NG Image Saving Option"
       ],
       "media": {
-        "images": ["/uploads/count/1_biscuit.jpg"
+        "images": ["/uploads/solutions/count/1_biscuit.jpg"
                   ],
         "videos": [
-          "/uploads/count/3_biscuit.mp4",
-          "/uploads/count/biscuit_count.mp4"
+          "/uploads/solutions/count/3_biscuit.mp4",
+          "/uploads/solutions/count/biscuit_count.mp4"
         ],
         
         "htmlFiles": []
@@ -90,9 +90,9 @@
         "NG Image Saving Option"
       ],
       "media": {
-        "images": ["/uploads/classification/1.jpg",
-                "/uploads/classification/2.jpg",
-                "/uploads/classification/3.jpg"],
+        "images": ["/uploads/solutions/classification/1.jpg",
+                "/uploads/solutions/classification/2.jpg",
+                "/uploads/solutions/classification/3.jpg"],
         "videos": [],
         "htmlFiles": []
       },
@@ -113,8 +113,8 @@
       ],
       "media": {
         "images": [],
-        "videos": ["/uploads/pick_place/pick_place.mp4",
-                  "/uploads/pick_place/pick_place1.mp4"],
+        "videos": ["/uploads/solutions/pick_place/pick_place.mp4",
+                  "/uploads/solutions/pick_place/pick_place1.mp4"],
         "htmlFiles": []
       },
       "background": "/uploads/group-1000001855.png"
@@ -132,12 +132,12 @@
         "Custom OCR Support"
       ],
       "media": {
-        "images": ["/uploads/OCR/1_ocr.jpeg",
-                   "/uploads/OCR/2_ocr.jpeg",
-                   "/uploads/OCR/3_ocr.jpeg",
-                   "/uploads/OCR/4_ocr.jpeg"],
-        "videos": ["/uploads/OCR/RWF_OCR.mp4"],
-        "htmlFiles": ["/uploads/OCR/OCR.html"]
+        "images": ["/uploads/solutions/OCR/1_ocr.jpeg",
+                   "/uploads/solutions/OCR/2_ocr.jpeg",
+                   "/uploads/solutions/OCR/3_ocr.jpeg",
+                   "/uploads/solutions/OCR/4_ocr.jpeg"],
+        "videos": ["/uploads/solutions/OCR/RWF_OCR.mp4"],
+        "htmlFiles": ["/uploads/solutions/OCR/OCR.html"]
       },
       "background": "/uploads/group-1000001854.png"
     }
@@ -155,10 +155,11 @@
         "Multiple Codes in a Single Image"
       ],
       "media": {
-        "images": ["/uploads/code/1.jpg",
-                  "/uploads/code/2.jpg",
-                  "/uploads/code/3.PNG"],
-        "videos": ["/uploads/code/Pack barcode.mp4"],
+        "images": ["/uploads/solutions/code/1.jpg",
+                  "/uploads/solutions/code/2.jpg",
+                  "/uploads/solutions/code/3.PNG",
+                "/uploads/solutions/code/4.jpg"],
+        "videos": ["/uploads/solutions/code/Pack barcode.mp4"],
         "htmlFiles": []
       },
       "background": "/uploads/group-1000001855.png"
@@ -181,10 +182,10 @@
       ],
       "media": {
         "images": [],
-        "videos": ["/uploads/hybrid/braile_1.mp4"],
+        "videos": ["/uploads/solutions/hybrid/braile_1.mp4"],
         "htmlFiles": []
       },
-      "background": "/uploads/group-1000001854.png"
+      "background": "/uploads/solutions/group-1000001854.png"
     },
     {
       "title": "Hybrid AI-Driven Solutions (Cashew Sorting)",
@@ -197,8 +198,8 @@
 
       ],
       "media": {
-        "images": ["/uploads/hybrid/cashew_1.jpg",
-                    "/uploads/hybrid/cashew_2.jpg"],
+        "images": ["/uploads/solutions/hybrid/cashew_1.jpg",
+                    "/uploads/solutions/hybrid/cashew_2.jpg"],
         "videos": [],
         "htmlFiles": []
       },
