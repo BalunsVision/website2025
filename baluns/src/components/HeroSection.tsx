@@ -141,10 +141,11 @@ const HeroSection: React.FC = () => {
                         return (
                           <Link key={i} to={btn.link}>
                             <Button
-                              className={`px-6 sm:px-8 py-3 rounded-md font-semibold text-sm sm:text-base ${
+                              variant="outline" // prevents default bg-primary
+                              className={`px-6 sm:px-8 py-3 rounded-md font-semibold text-sm sm:text-base transition-colors ${
                                 variant === "outline"
-                                  ? "border border-gray-300 text-gray-700 hover:bg-gray-50"
-                                  : "bg-orange-primary hover:bg-orange-secondary text-white"
+                                  ? "bg-transparent border border-gray-300 text-gray-700"
+                                  : "bg-orange-primary hover:bg-orange-secondary text-white border-0"
                               }`}
                             >
                               {btn.text}

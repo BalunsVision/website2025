@@ -35,7 +35,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mt-[4.25rem]">
       <Header />
 
       {/* Hero Section */}

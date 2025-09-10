@@ -7,7 +7,7 @@ import FeaturedProducts from '@/components/FeaturedProducts';
 
 const Products = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white mt-[4.25rem]">
       <Header />
       <main>
         {/* <ProductHero /> */}
