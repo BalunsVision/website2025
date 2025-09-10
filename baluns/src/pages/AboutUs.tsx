@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -6,24 +5,14 @@ import Footer from '@/components/Footer';
 const AboutUs = () => {
   const leaders = [
     {
-      name: 'Ronald Richards',
-      position: 'Manufacturing Executive',
-      image: '/uploads/240_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg'
+      name: 'Saravanakumar S',
+      position: 'Co-Founder & Technical Lead',
+      image: '/uploads/saravanakumar.jpg'
     },
     {
-      name: 'Brooklyn Simmons',
-      position: 'Industrial Engineer',
-      image: '/uploads/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer.jpg'
-    },
-    {
-      name: 'Cameron Williamson',
-      position: 'Production Supervisor',
-      image: '/uploads/240_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg'
-    },
-    {
-      name: 'Darlene Robertson',
-      position: 'Manufacturing Executive',
-      image: '/uploads/excited-young-woman-showing-banner-pointing-fingers-left-smiling-camera-standing-amazed-white-wall.jpg'
+      name: 'Amutha S',
+      position: 'Co-Founder',
+      image: '/uploads/amutha.jpg'
     }
   ];
 
@@ -172,20 +161,85 @@ We are passionate about solving complex, real-world manufacturing challenges usi
         </div>
       </section>
 
+      {/* Partnerships Section */}
+      <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+            Strategic Partnerships
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {partnerships.map((partner, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-4 bg-white rounded-xl p-6 shadow hover:shadow-lg transition"
+              >
+                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full">
+                  <span className="text-2xl">🤝</span>
+                </div>
+                <p className="text-lg text-gray-700">{partner.replace('🤝 ', '')}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* What We Do Section */}
+      <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What We Do</h2>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {expertise.map((item, index) => (
+              <li key={index} className="bg-white rounded-xl shadow p-6">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Industries Section */}
+      <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-lg mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Industries We Serve</h2>
+          <ul className="flex flex-wrap justify-center gap-6 text-lg text-gray-700">
+            {industries.map((industry, index) => (
+              <li key={index} className="bg-gray-100 px-6 py-3 rounded-lg shadow">
+                {industry}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Focus Areas Section */}
+      <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Key Focus Areas</h2>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {focusAreas.map((area, index) => (
+              <li key={index} className="bg-white rounded-xl shadow p-6">
+                {area}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Leadership Section */}
       <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-screen-2xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-12 text-center">
             Our Leadership
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
             {leaders.map((leader, index) => (
               <div key={index} className="text-center">
                 <div className="relative mb-4">
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="w-49 h-48 rounded-2xl object-cover mx-auto shadow-lg"
+                    className="w-48 h-48 rounded-2xl object-cover mx-auto shadow-lg"
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">

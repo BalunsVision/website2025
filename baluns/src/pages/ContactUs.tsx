@@ -176,10 +176,11 @@ const ContactUs = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Our Address</h4>
-                  <p className="text-gray-600">
-                    Baluns Technologies<br />
-                    429A, JP Nagar 5 Phase,<br />
-                    Bangalore - 560078,<br />
+                 <p className="text-gray-600">
+                    Baluns Vision Technologies Private Limited <br />
+                    No.53, 9th Cross Road, GNK Plazza, <br />
+                    JP Nagar Phase 1, Sarakki, <br />
+                    Bangalore - 560078 <br />
                     Karnataka, India
                   </p>
                 </div>
