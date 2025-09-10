@@ -1,29 +1,22 @@
 [
   {
     "name": "Jennifer",
-    "rating": 5,
-    "text": "Best of the best... in class",
-    "subtitle": "Very good camera system with amazing quality and easy to use interface.",
-    "media": {
-      "images": [
-        "/uploads/240_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
-      ],
-      "videos": [],
-      "htmlFiles": []
-    }
+    "text": "Absolutely love this product, it has changed the way I work!",
+    "subtitle": "Very good camera system with amazing quality and easy to use interface."
   },
   {
     "name": "Sarah Wilson",
-    "rating": 5,
-    "text": "Best of the best... in class",
-    "subtitle": "Outstanding product quality and excellent customer service support.",
-    "media": {
-      "images": [
-        "/uploads/240_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg"
-      ],
-      "videos": [],
-      "htmlFiles": []
-    }
+    "text": "Exceptional quality and unmatched support from the team.",
+    "subtitle": "Outstanding product quality and excellent customer service support."
+  },
+  {
+    "name": "Mike Johnson",
+    "text": "Highly recommend this to anyone looking for professional-grade equipment.",
+    "subtitle": "Professional grade equipment that exceeds all expectations."
+  },
+  {
+    "name": "Lisa Davis",
+    "text": "Amazing value for money! Will definitely purchase again.",
+    "subtitle": "Incredible value for money and amazing build quality."
   }
-  
 ]

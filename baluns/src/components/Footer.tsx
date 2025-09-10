@@ -21,7 +21,7 @@ const Footer = () => {
           <div className="sm:col-span-2">
             <div className="mb-4">
               <img
-                src="https://balunstech.com/images/_logo.png"
+                src="/_logo.png"
                 alt="Baluns Logo"
                 className="h-10 sm:h-12 w-auto object-contain"
               />

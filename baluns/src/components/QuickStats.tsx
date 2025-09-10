@@ -3,23 +3,22 @@ const QuickStats = () => {
     {
       number: "100+",
       label: "Projects Delivered",
-      description: "Go-to partner for highly complex, customized projects – trusted by repeat customers"
+      description: "Successfully deployed across industries"
     },
     {
-      number: "200+",
-      label: "Ultra-fast Inspection",
-      description: "High Speed inspection: 200+ items per second, without compromising quality"
-    },
-    {
-      number: ">99%",
+      number: "99%",
       label: "Accuracy Rate", 
-      description: "AI-powered, hybrid precision inspection for unmatched speed and accuracy"
+      description: "AI-powered inspection precision"
     },
-
     {
-      number: "<1 day",
-      label: "Downtime and Support",
-      description: "Minimized downtime with continuous monitoring, rapid response, and remote support"
+      number: "24/7",
+      label: "Support",
+      description: "Continuous monitoring and assistance"
+    },
+    {
+      number: "50+",
+      label: "Industry Partners",
+      description: "Trusted by leading manufacturers"
     }
   ];
 

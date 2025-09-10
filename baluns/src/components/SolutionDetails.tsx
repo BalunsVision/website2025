@@ -27,6 +27,7 @@ interface Slide {
 interface SectionProps {
   id: string;
   slides: Slide[];
+  isActive?: boolean; // ⭐ highlight condition
 }
 
 // --- Dynamically generate sections ---
@@ -35,7 +36,10 @@ const solutionSections = solutionCategories
     const slidesKey = Object.keys(rawData).find((key) => {
       const normalizedId = category.sectionId.toLowerCase().replace(/-/g, "");
       const normalizedKey = key.toLowerCase().replace(/slides$/, "");
-      return normalizedKey.includes(normalizedId) || normalizedId.includes(normalizedKey);
+      return (
+        normalizedKey.includes(normalizedId) ||
+        normalizedId.includes(normalizedKey)
+      );
     });
 
     if (!slidesKey) return null;
@@ -78,11 +82,7 @@ function renderMedia(slide: Slide) {
 function renderSingle(type: string, src: string, title: string, idx?: number) {
   if (type === "image") {
     return (
-      <img
-        src={src}
-        alt={title}
-        className="w-full h-[500px] rounded-lg"
-      />
+      <img src={src} alt={title} className="w-full h-[500px] rounded-lg" />
     );
   }
   if (type === "video") {
@@ -97,8 +97,6 @@ function renderSingle(type: string, src: string, title: string, idx?: number) {
           playsInline
         />
       </div>
-
-
     );
   }
   return (
@@ -111,7 +109,10 @@ function renderSingle(type: string, src: string, title: string, idx?: number) {
 }
 
 // --- Inner carousel for multiple media items ---
-const InnerAutoCarousel: React.FC<{ sources: { type: string; src: string }[]; title: string }> = ({ sources, title }) => {
+const InnerAutoCarousel: React.FC<{
+  sources: { type: string; src: string }[];
+  title: string;
+}> = ({ sources, title }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [count, setCount] = useState(0);
   const intervalRef = useRef<any>(null);
@@ -121,7 +122,8 @@ const InnerAutoCarousel: React.FC<{ sources: { type: string; src: string }[]; ti
 
     setCount(api.scrollSnapList().length);
 
-    const start = () => (intervalRef.current = setInterval(() => api.scrollNext(), 3000));
+    const start = () =>
+      (intervalRef.current = setInterval(() => api.scrollNext(), 3000));
     const stop = () => clearInterval(intervalRef.current);
 
     start();
@@ -137,7 +139,11 @@ const InnerAutoCarousel: React.FC<{ sources: { type: string; src: string }[]; ti
   }, [api]);
 
   return (
-    <Carousel setApi={setApi} opts={{ loop: true }} className="w-full h-full relative group overflow-hidden rounded-lg">
+    <Carousel
+      setApi={setApi}
+      opts={{ loop: true }}
+      className="w-full h-full relative group overflow-hidden rounded-lg"
+    >
       <CarouselContent className="h-full">
         {sources.map(({ type, src }, i) => (
           <CarouselItem key={i} className="h-full">
@@ -157,8 +163,9 @@ const InnerAutoCarousel: React.FC<{ sources: { type: string; src: string }[]; ti
     </Carousel>
   );
 };
+
 // --- Outer section carousel ---
-const SliderSection: React.FC<SectionProps> = ({ id, slides }) => {
+const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [count, setCount] = useState(0);
 
@@ -168,20 +175,37 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides }) => {
   }, [api]);
 
   return (
-    <section id={id} className="pt-6 sm:pt-8 lg:pt-8 pb-0 bg-white">
+    <section
+      id={id}
+      className={`pt-6 sm:pt-8 lg:pt-8 pb-0 transition-all duration-300`}
+    >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-6">
-        <div className="relative group">
-          <Carousel setApi={setApi} opts={{ align: "start", loop: true }} className="w-full">
+        <div
+          className={`relative group rounded-lg transition-all duration-300`}
+          style={{
+  backgroundColor: isActive ? "#ff5e15" : "transparent", 
+  boxShadow: isActive ? "0 8px 30px rgba(0,0,0,0.4)" : "none", 
+  padding: isActive ? "20px" : "0px", 
+  borderRadius: "12px",
+  transition: "all 0.4s ease", // 👈 smooth animation
+}}
+        >
+          <Carousel
+            setApi={setApi}
+            opts={{ align: "start", loop: true }}
+            className="w-full"
+          >
             <CarouselContent>
               {slides.map((slide) => {
-                const isEven = (slide.globalIndex ?? 0) % 2 === 0; // 👈 true alternation across all
-
+                const isEven = (slide.globalIndex ?? 0) % 2 === 0;
                 return (
                   <CarouselItem key={slide.globalIndex}>
                     <div
                       className="relative text-white rounded-xl overflow-hidden shadow-2xl bg-cover bg-center"
                       style={{
-                        backgroundImage: `url(${slide.background || slide.media.images[0] || ""})`,
+                        backgroundImage: `url(${
+                          slide.background || slide.media.images[0] || ""
+                        })`,
                       }}
                     >
                       <div
@@ -212,7 +236,10 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides }) => {
                           </p>
                           <div className="space-y-2 mb-6 sm:mb-10">
                             {slide.features.map((f, i) => (
-                              <div key={i} className="flex items-center text-sm sm:text-base">
+                              <div
+                                key={i}
+                                className="flex items-center text-sm sm:text-base"
+                              >
                                 <span className="w-2 h-2 bg-orange-primary rounded-full mr-3"></span>
                                 {f}
                               </div>
@@ -228,6 +255,7 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides }) => {
                 );
               })}
             </CarouselContent>
+
             {count > 1 && (
               <>
                 <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 bg-black/40 text-white rounded-full p-2" />
@@ -240,16 +268,43 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides }) => {
     </section>
   );
 };
+
+
 export default function SolutionDetails() {
   // flatten index across all sections
   let globalCounter = 0;
+  const [activeSection, setActiveSection] = useState<string | null>(null); // ⭐
+
+  // detect which section is visible
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      let current: string | null = null;
+
+      sections.forEach((sec) => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= 200 && rect.bottom >= 200) {
+          current = sec.id;
+        }
+      });
+
+      if (current !== activeSection) {
+        setActiveSection(current);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeSection]);
 
   return (
     <div>
       {solutionSections.map((section) => {
         const slidesWithIndex = section.slides.map((slide) => ({
           ...slide,
-          globalIndex: globalCounter++, // 👈 always increments
+          globalIndex: globalCounter++,
         }));
 
         return (
@@ -257,6 +312,7 @@ export default function SolutionDetails() {
             key={section.id}
             id={section.id}
             slides={slidesWithIndex}
+            isActive={activeSection === section.id} // ⭐ pass condition
           />
         );
       })}
