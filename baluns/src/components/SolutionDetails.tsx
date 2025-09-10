@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import ContactModal from "@/components/ContactModal";
 import {
   Carousel,
   CarouselContent,
@@ -168,6 +169,7 @@ const InnerAutoCarousel: React.FC<{
 const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [count, setCount] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     if (!api) return;
@@ -183,12 +185,12 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
         <div
           className={`relative group rounded-lg transition-all duration-300`}
           style={{
-  backgroundColor: isActive ? "#ff5e15" : "transparent", 
-  boxShadow: isActive ? "0 8px 30px rgba(0,0,0,0.4)" : "none", 
-  padding: isActive ? "20px" : "0px", 
-  borderRadius: "12px",
-  transition: "all 0.4s ease", // 👈 smooth animation
-}}
+            backgroundColor: isActive ? "#ff5e15" : "transparent", 
+            boxShadow: isActive ? "0 8px 30px rgba(0,0,0,0.4)" : "none", 
+            padding: isActive ? "20px" : "0px", 
+            borderRadius: "12px",
+            transition: "all 0.4s ease", // 👈 smooth animation
+          }}
         >
           <Carousel
             setApi={setApi}
@@ -245,9 +247,12 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
                               </div>
                             ))}
                           </div>
-                          <Button className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg">
+                          <Button 
+                          onClick={() => setModalOpen(true)}
+                          className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg">
                             GET IN TOUCH
                           </Button>
+                          <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
                         </div>
                       </div>
                     </div>
