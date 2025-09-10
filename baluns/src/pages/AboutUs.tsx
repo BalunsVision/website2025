@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const AboutUs = () => {
+
   const leaders = [
     {
       name: 'Saravanakumar S',
@@ -14,6 +15,42 @@ const AboutUs = () => {
       position: 'Co-Founder',
       image: '/uploads/amutha.jpg'
     }
+  ];
+
+  const values = [
+    'Integrity in every partnership and process',
+    'Excellence in Service through innovation and commitment',
+    'Customer-Centric Innovation that addresses unique industry needs'
+  ];
+
+  const partnerships = [
+    '🤝 Omron – Traceability Vision Solution Partner',
+    '🤝 Hikrobot – Technical Solution Partner'
+  ];
+
+  const expertise = [
+    'AI for Manufacturing & Quality Control',
+    'Machine Vision Systems & Smart Camera Development',
+    'Embedded Systems & Edge Computing',
+    'Industrial Automation & Robotics Integration',
+    'Print Quality Inspection, OCR, and Barcode Reading',
+    'Vision-Guided Robotics for Pick-and-Place Applications'
+  ];
+
+  const industries = [
+    'Automotive',
+    'Aerospace',
+    'Printing & Packaging',
+    'Food & Beverages',
+    'FMCG (Fast-Moving Consumer Goods)'
+  ];
+
+  const focusAreas = [
+    'Smart Camera & Machine Vision System Design',
+    'AI for Defect Detection & Quality Inspection',
+    'Real-Time Edge Computing Solutions',
+    'Robotic Vision System Integration',
+    'Automation Strategy for Industry 4.0'
   ];
 
   const missionPoints = [
