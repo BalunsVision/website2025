@@ -35,8 +35,7 @@
                   "/uploads/product/capsule/1.jpg",
                   "/uploads/product/capsule/2.jpg",
                 "/uploads/product/capsule/3.jpg",
-              "/uploads/product/capsule/4.jpg",
-            "/uploads/product/capsule/5.jpg"],
+              "/uploads/product/capsule/4.jpg"],
       "videos": [],
       "htmlFiles": []
     },
@@ -140,8 +139,7 @@
     "subtitle": "An advanced vision-based inspection solution using deep learning and hybrid image analysis to detect capsule formation defects during production. Reduces manual inspection, improves consistency, and prevents defective products from reaching the market",
     "media": {
       "images": ["/uploads/product/onlinewet/main.PNG",
-                  "/uploads/product/onlinewet/1.PNG",
-                "/uploads/product/onlinewet/2.PNG"],
+                  "/uploads/product/onlinewet/1.PNG"],
       "videos": [],
       "htmlFiles": ["/uploads/product/onlinewet/wetcapusle.html"]
     },

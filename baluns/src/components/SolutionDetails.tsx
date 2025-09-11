@@ -187,7 +187,7 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
           style={{
             backgroundColor: isActive ? "#ff5e15" : "transparent", 
             boxShadow: isActive ? "0 8px 30px rgba(0,0,0,0.4)" : "none", 
-            padding: isActive ? "20px" : "0px", 
+            padding: isActive ? "5px" : "0px", 
             borderRadius: "12px",
             transition: "all 0.4s ease", // 👈 smooth animation
           }}

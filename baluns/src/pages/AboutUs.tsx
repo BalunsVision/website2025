@@ -7,13 +7,13 @@ const AboutUs = () => {
   const leaders = [
     {
       name: 'Saravanakumar S',
-      position: 'Co-Founder & Technical Lead',
-      image: '/uploads/saravanakumar.jpg'
+      position: 'Founder & Technical Lead',
+      image: '/uploads/leader/Saravana.jpg'
     },
     {
       name: 'Amutha S',
       position: 'Co-Founder',
-      image: '/uploads/amutha.jpg'
+      image: '/uploads/leader/Amutha.jpg'
     }
   ];
 
@@ -125,9 +125,9 @@ We are passionate about solving complex, real-world manufacturing challenges usi
             </div>
             <div className="relative">
               <img
-                src="/uploads/aerial-view-business-team.jpg"
+                src="/uploads/story.jpg"
                 alt="Our Story"
-                className="rounded-2xl w-full h-96 object-cover shadow-lg"
+                className="rounded-2xl w-full h-125 object-cover shadow-lg"
               />
             </div>
           </div>
@@ -173,9 +173,9 @@ We are passionate about solving complex, real-world manufacturing challenges usi
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Awards & Recognition</h3>
               </div>
-              <div className="absolute top-8 right-8 w-64 h-40">
+              <div className="absolute top-10 right-8 w-64 h-60" >
                 <img
-                  src="/uploads/98354657-8bb2-454e-820c-d6168b4ba677.png"
+                  src="/uploads/awards.jpeg"
                   alt="Vision"
                   className="rounded-xl w-full h-full object-cover"
                 />
@@ -276,7 +276,7 @@ We are passionate about solving complex, real-world manufacturing challenges usi
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="w-48 h-48 rounded-2xl object-cover mx-auto shadow-lg"
+                    className="w-56 h-70 rounded-2xl object-cover mx-auto shadow-lg"
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">

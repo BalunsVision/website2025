@@ -108,7 +108,7 @@ const ContactUs = () => {
             {/* Product Image */}
             <div className="flex justify-center">
               <img
-                src="/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png"
+                src="/uploads/contactus.jpg"
                 alt="Contact Product"
                 className="max-w-md w-full h-auto"
               />

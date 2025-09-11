@@ -56,7 +56,7 @@ export default function FeaturedProducts() {
                     p-6 h-auto flex items-center gap-6 overflow-hidden group hover:shadow-lg transition-shadow duration-300 
                     ${isLast ? "sm:col-span-2 sm:w-1/2" : "w-full"}`}
                 >
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 rounded-2xl">
                     <img
                       src={product.media.images?.[0] || "/placeholder.png"}
                       alt={product.title}
