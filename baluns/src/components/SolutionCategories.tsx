@@ -78,7 +78,12 @@ const SolutionCategories = () => {
       {fixed && (
         <div className="fixed top-0 left-0 w-full bg-white shadow-md border-b border-gray-200 z-40 h-14 sm:h-16 flex items-center">
           <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-6 w-full">
-            <div className="flex justify-start sm:justify-center items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar">
+            <div
+              className="
+                flex flex-wrap justify-center items-center gap-1
+                sm:flex-nowrap sm:justify-center sm:gap-6 sm:overflow-x-auto sm:no-scrollbar
+              "
+            >
               {solutionCategories.map((category, index) => {
                 const IconComponent = (LucideIcons as any)[category.icon];
                 const isActive = activeCategory === category.sectionId;
@@ -87,16 +92,16 @@ const SolutionCategories = () => {
                   <div
                     key={index}
                     onClick={() => scrollToSection(category.sectionId)}
-                    className={`flex flex-col items-center justify-center h-12 min-w-[60px] sm:min-w-[70px] px-2 cursor-pointer transition-all ${
+                    className={`flex flex-col items-center justify-center h-12 min-w-[48px] sm:min-w-[70px] px-1 sm:px-2 cursor-pointer transition-all ${
                       isActive
                         ? "text-orange-500 font-semibold"
                         : "text-gray-700 hover:text-orange-500"
                     }`}
                   >
                     {IconComponent && (
-                      <IconComponent className="w-5 h-5 mb-1" />
+                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 mb-1" />
                     )}
-                    <span className="text-[10px] sm:text-xs font-medium text-center">
+                    <span className="hidden sm:block text-[10px] sm:text-xs font-medium text-center">
                       {category.name}
                     </span>
                   </div>
@@ -106,6 +111,7 @@ const SolutionCategories = () => {
           </div>
         </div>
       )}
+
     </>
   );
 };

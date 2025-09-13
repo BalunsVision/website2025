@@ -183,18 +183,24 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
     >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-6">
         <div
-          className={`relative group rounded-lg transition-all duration-300`}
+          className="relative group rounded-lg transition-all duration-300"
           style={{
-            backgroundColor: isActive ? "#ff5e15" : "transparent", 
-            boxShadow: isActive ? "0 8px 30px rgba(0,0,0,0.4)" : "none", 
-            padding: isActive ? "20px" : "0px", 
+            border: isActive ? "2px solid #ff5e15" : "2px solid transparent", 
+            boxShadow: isActive ? "0 8px 30px rgba(0,0,0,0.4)" : "none",   
+            padding: "5px",                                                 
             borderRadius: "12px",
-            transition: "all 0.4s ease", // 👈 smooth animation
+            transition: "all 0.4s ease",                                     
           }}
         >
+
           <Carousel
             setApi={setApi}
-            opts={{ align: "start", loop: true }}
+            opts={{
+              align: "start",
+              loop: slides.length > 1,
+              watchDrag: slides.length > 1,        
+              containScroll: "trimSnaps"
+            }}
             className="w-full"
           >
             <CarouselContent>
@@ -227,7 +233,7 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
 
                         {/* Text */}
                         <div
-                          className={`w-full lg:w-1/2 p-6 sm:p-8 xl:p-16 flex flex-col justify-center 
+                          className={`w-full lg:w-1/2 p-6 sm:p-8 xl:p-16 flex flex-col 
                             ${isEven ? "lg:pl-12" : "lg:pr-12"}`}
                         >
                           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-orange-primary leading-tight">

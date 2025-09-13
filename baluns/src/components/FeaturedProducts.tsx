@@ -9,6 +9,7 @@ import {
   CarouselApi,
 } from "@/components/ui/carousel";
 import products from "@/data/featuredProducts.json";
+import ContactModal from "@/components/ContactModal";
 
 // Product types
 interface ProductSection {
@@ -38,7 +39,7 @@ export default function FeaturedProducts() {
   const scrollToSection = (id: string) => {
     sectionRefs.current[id]?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
-
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <div>
       {/* Product Cards */}
@@ -56,7 +57,7 @@ export default function FeaturedProducts() {
                     p-6 h-auto flex items-center gap-6 overflow-hidden group hover:shadow-lg transition-shadow duration-300 
                     ${isLast ? "sm:col-span-2 sm:w-1/2" : "w-full"}`}
                 >
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 ">
                     <img
                       src={product.media.images?.[0] || "/placeholder.png"}
                       alt={product.title}
@@ -110,7 +111,7 @@ export default function FeaturedProducts() {
                   </div>
 
                   {/* Text */}
-                  <div className={`w-full lg:w-1/2 p-6 sm:p-8 xl:p-16 flex flex-col justify-center`}>
+                  <div className={`w-full lg:w-1/2 p-6 flex flex-col`}>
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-orange-primary leading-tight">
                       {product.title}
                     </h2>
@@ -135,9 +136,12 @@ export default function FeaturedProducts() {
                       </div>
                     ))}
 
-                    <Button className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-4 py-1.5 text-xs sm:text-sm font-semibold transition-all mt-4">
+                    <Button 
+                    onClick={() => setModalOpen(true)}
+                    className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg">
                       GET IN TOUCH
                     </Button>
+                    <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
                   </div>
                 </div>
               </div>

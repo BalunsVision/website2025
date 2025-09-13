@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 
 interface ContactModalProps {
   open: boolean;
@@ -16,14 +15,20 @@ interface ContactModalProps {
   onClose: () => void;
 }
 
-export default function ContactModal({ open, onClose, clickType }: ContactModalProps) {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+export default function ContactModal({
+  open,
+  onClose,
+  clickType,
+}: ContactModalProps) {
+  const [form, setForm] = useState({
+    address: "",
+    location: "",
+    mapsLink: "",
+  });
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -34,8 +39,12 @@ export default function ContactModal({ open, onClose, clickType }: ContactModalP
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      setResponse("✅ Mail sent successfully!");
-      setForm({ name: "", email: "", message: "" });
+      setResponse("✅ Data submitted successfully!");
+      setForm({
+        address: "",
+        location: "",
+        mapsLink: "",
+      });
     } catch (err) {
       setResponse("❌ Something went wrong.");
     } finally {
@@ -47,36 +56,34 @@ export default function ContactModal({ open, onClose, clickType }: ContactModalP
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Get in Touch</DialogTitle>
+          <DialogTitle>Send Your Location</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
-            name="name"
-            placeholder="Your Name"
-            value={form.name}
+            name="address"
+            placeholder="Your Address"
+            value={form.address}
             onChange={handleChange}
             required
           />
           <Input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={form.email}
+            name="location"
+            placeholder="Your Location (City, State)"
+            value={form.location}
             onChange={handleChange}
             required
           />
-          <Textarea
-            name="message"
-            placeholder="Your Message"
-            value={form.message}
+          <Input
+            type="url"
+            name="mapsLink"
+            placeholder="Google Maps Link"
+            value={form.mapsLink}
             onChange={handleChange}
             required
           />
 
-          {response && (
-            <p className="text-sm text-center mt-2">{response}</p>
-          )}
+          {response && <p className="text-sm text-center mt-2">{response}</p>}
 
           <DialogFooter>
             <Button type="submit" disabled={loading}>

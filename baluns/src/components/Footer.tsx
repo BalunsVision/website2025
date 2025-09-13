@@ -4,12 +4,22 @@ const Footer = () => {
   const footerSections = [
     {
       title: 'Main Menu',
-      links: ['Home', 'About', 'Services', 'Contact']
+      links: [
+        { name: 'Home', href: '/' },
+        { name: 'Products', href: '/products' },
+        { name: 'Solutions', href: '/solutions' },
+        { name: 'Contact', href: '/contact' },
+      ],
     },
     {
       title: 'Extras',
-      links: ['Company', 'Services', 'Careers', 'About']
-    }
+      links: [
+        { name: 'Company', href: '/' },
+        { name: 'Services', href: '/solutions' },
+        { name: 'Careers', href: '/careers' },
+        { name: 'About', href: '/aboutus' },
+      ],
+    },
   ];
 
   return (
@@ -69,10 +79,10 @@ const Footer = () => {
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-gray-700 hover:text-black transition-colors text-sm sm:text-base"
                     >
-                      {link}
+                      {link.name}
                     </a>
                   </li>
                 ))}

@@ -25,12 +25,12 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       setScrolled(currentScrollY > 50);
 
       if (location.pathname === "/solutions") {
         if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
           setHidden(true);
+          setIsMenuOpen(false); // Close mobile menu on scroll down
         } else {
           setHidden(false);
         }
@@ -46,14 +46,14 @@ const Header = () => {
   }, [location.pathname]);
 
   return (
-      <header
-        className={`top-0 left-0 w-full bg-white shadow-sm border-b border-gray-200 z-50 transition-all duration-300 ${
-          location.pathname === "/solutions"
-            ? "" // not fixed on solutions page
-            : "fixed" // fixed on all other pages
-        } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
-        style={{ height: scrolled ? "4rem" : "5rem" }}
-      >
+    <header
+      className={`top-0 left-0 w-full bg-white shadow-sm border-b border-gray-200 transition-all duration-300
+        ${location.pathname === "/solutions" && !isMenuOpen ? "" : "fixed"}
+        ${hidden ? "-translate-y-full" : "translate-y-0"}
+        ${isMenuOpen && location.pathname === "/solutions" ? "z-[99999]" : "z-50"}`}
+      style={{ height: scrolled ? "4rem" : "5rem" }}
+    >
+
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-6 flex justify-between items-center h-full transition-all duration-300">
         {/* Logo */}
         <Link to="/baluns" className="flex items-center">
@@ -96,6 +96,28 @@ const Header = () => {
           </Button>
         </div>
       </div>
+
+      {/* 📱 Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-200 z-[99999]">
+          <nav className="flex flex-col space-y-2 px-4 py-4">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                onClick={() => setIsMenuOpen(false)} // close after click
+                className={`block font-medium transition-all duration-300 py-2 px-3 rounded-md ${
+                  isActivePath(item.path)
+                    ? "text-orange-primary bg-orange-50"
+                    : "text-gray-700 hover:text-orange-primary"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
