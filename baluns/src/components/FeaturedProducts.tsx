@@ -9,6 +9,7 @@ import {
   CarouselApi,
 } from "@/components/ui/carousel";
 import products from "@/data/featuredProducts.json";
+import ContactModal from "@/components/ContactModal";
 
 // Product types
 interface ProductSection {
@@ -38,6 +39,7 @@ export default function FeaturedProducts() {
   const scrollToSection = (id: string) => {
     sectionRefs.current[id]?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div>
@@ -96,7 +98,6 @@ export default function FeaturedProducts() {
             ref={(el: HTMLDivElement | null) => (sectionRefs.current[product.id] = el)}
             className="py-8 sm:py-10 lg:py-12"
           >
-
             <div className="max-w-screen-2xl mx-auto px-4 sm:px-6">
               <div
                 className="relative text-white rounded-xl overflow-hidden shadow-2xl bg-cover bg-center"
@@ -105,12 +106,12 @@ export default function FeaturedProducts() {
                 <div className={`flex flex-col lg:flex-row min-h-[500px] items-stretch ${isEven ? "" : "lg:flex-row-reverse"}`}>
                   
                   {/* Media */}
-                  <div className={`w-full lg:w-1/2 flex items-center justify-center p-5 sm:p-6 lg:p-8 h-full`}>
+                  <div className="w-full lg:w-1/2 flex items-center justify-center p-5 sm:p-6 lg:p-8 h-full">
                     <MediaCarousel product={product} />
                   </div>
 
                   {/* Text */}
-                  <div className={`w-full lg:w-1/2 p-6 sm:p-8 xl:p-16 flex flex-col justify-center`}>
+                  <div className="w-full lg:w-1/2 p-6 flex flex-col">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-orange-primary leading-tight">
                       {product.title}
                     </h2>
@@ -135,9 +136,13 @@ export default function FeaturedProducts() {
                       </div>
                     ))}
 
-                    <Button className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-4 py-1.5 text-xs sm:text-sm font-semibold transition-all mt-4">
+                    <Button 
+                      onClick={() => setModalOpen(true)}
+                      className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg"
+                    >
                       GET IN TOUCH
                     </Button>
+                    <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
                   </div>
                 </div>
               </div>
@@ -161,8 +166,9 @@ function MediaCarousel({ product }: { product: Product }) {
     const only = slides[0] || { type: "image", src: "/placeholder.png" };
     return (
       <div className="flex items-center justify-center w-full h-[500px] bg-black rounded-xl overflow-hidden">
-        {only.type === "image" && <img src={only.src} alt={product.title} className="w-full h-full " />}
-        {only.type === "video" && <div className="w-full h-full rounded-lg overflow-hidden bg-black">
+        {only.type === "image" && <img src={only.src} alt={product.title} className="w-full h-full" />}
+        {only.type === "video" && (
+          <div className="w-full h-full rounded-lg overflow-hidden bg-black">
             <video
               src={only.src}
               autoPlay
@@ -172,7 +178,7 @@ function MediaCarousel({ product }: { product: Product }) {
               className="w-full h-full object-fill"
             />
           </div>
-        }
+        )}
         {only.type === "html" && <iframe src={only.src} title={product.title} className="w-full h-full border-none" />}
       </div>
     );
@@ -212,7 +218,8 @@ function MediaCarousel({ product }: { product: Product }) {
           <CarouselItem key={i}>
             <div className="flex items-center justify-center w-full h-[500px] bg-black">
               {slide.type === "image" && <img src={slide.src} alt={`${product.title}-${i}`} className="w-full h-full" />}
-              {slide.type === "video" && <div className="w-full h-full rounded-lg overflow-hidden bg-black">
+              {slide.type === "video" && (
+                <div className="w-full h-full rounded-lg overflow-hidden bg-black">
                   <video
                     src={slide.src}
                     autoPlay
@@ -222,7 +229,7 @@ function MediaCarousel({ product }: { product: Product }) {
                     className="w-full h-full object-fill"
                   />
                 </div>
-                }
+              )}
               {slide.type === "html" && <iframe src={slide.src} title={`${product.title}-${i}`} className="w-full h-full border-none" />}
             </div>
           </CarouselItem>
@@ -233,4 +240,3 @@ function MediaCarousel({ product }: { product: Product }) {
     </Carousel>
   );
 }
-
