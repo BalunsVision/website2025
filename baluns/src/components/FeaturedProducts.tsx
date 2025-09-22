@@ -141,7 +141,7 @@ export default function FeaturedProducts() {
                     className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg">
                       GET IN TOUCH
                     </Button>
-                    <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
+                    <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} clickType="button"/>
                   </div>
                 </div>
               </div>

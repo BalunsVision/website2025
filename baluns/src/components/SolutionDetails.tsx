@@ -157,8 +157,9 @@ const InnerAutoCarousel: React.FC<{
 
       {count > 1 && (
         <>
-          <CarouselPrevious className="absolute left-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 bg-black/40 text-white rounded-full p-2 mt-1" />
-          <CarouselNext className="absolute right-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 bg-black/40 text-white rounded-full p-2 mt-1" />
+          <CarouselPrevious className="!absolute !left-4 !top-1/2 !-translate-y-1/2 !opacity-0 group-hover:!opacity-100 !transition-all !duration-300 !z-30 !w-6 !h-6 !p-1 !bg-white/30 !backdrop-blur-sm !text-gray-800 !shadow-md !hover:!bg-white/50 !hover:!scale-110 !rounded-md !mt-1"/>
+          <CarouselNext className="!absolute !right-4 !top-1/2 !-translate-y-1/2 !opacity-0 group-hover:!opacity-100 !transition-all !duration-300 !z-30 !w-6 !h-6 !p-1 !bg-white/30 !backdrop-blur-sm !text-gray-800 !shadow-md !hover:!bg-white/50 !hover:!scale-110 !rounded-md !mt-1"/>
+
         </>
       )}
     </Carousel>
@@ -258,7 +259,7 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
                           className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg">
                             GET IN TOUCH
                           </Button>
-                          <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
+                          <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} clickType="button"/>
                         </div>
                       </div>
                     </div>
