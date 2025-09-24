@@ -38,14 +38,29 @@ export default function ContactModal({
     setResponse("");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setResponse("✅ Data submitted successfully!");
-      setForm({
-        address: "",
-        location: "",
-        mapsLink: "",
+      const formData = new FormData();
+      formData.append("address", form.address);
+      formData.append("location", form.location);
+      formData.append("mapsLink", form.mapsLink);
+      formData.append("clickType", clickType); // send the slide title
+
+      const res = await fetch("https://balunstech.com/send_email.php", {
+        method: "POST",
+        body: formData,
       });
+
+      const text = await res.text();
+
+      if (res.ok) {
+        setResponse("✅ Mail sent successfully!");
+        setForm({ address: "", location: "", mapsLink: "" });
+      } else {
+        setResponse("❌ Failed to send mail.");
+      }
+
+      console.log("Server Response:", text);
     } catch (err) {
+      console.error("Error:", err);
       setResponse("❌ Something went wrong.");
     } finally {
       setLoading(false);

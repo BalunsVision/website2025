@@ -170,7 +170,11 @@ const InnerAutoCarousel: React.FC<{
 const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [count, setCount] = useState(0);
-  const [modalOpen, setModalOpen] = useState(false);
+  // State for modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // State for clickType (slide title)
+  const [clickType, setClickType] = useState<string>("");
+
 
   useEffect(() => {
     if (!api) return;
@@ -254,12 +258,23 @@ const SliderSection: React.FC<SectionProps> = ({ id, slides, isActive }) => {
                               </div>
                             ))}
                           </div>
-                          <Button 
-                          onClick={() => setModalOpen(true)}
-                          className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg">
-                            GET IN TOUCH
-                          </Button>
-                          <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} clickType="button"/>
+                         
+                      <Button
+                        onClick={() => {
+                          setClickType(slide.title); // ✅ store the title
+                          setIsModalOpen(true);      // ✅ open the modal
+                        }}
+                        className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg"
+                      >
+                        GET IN TOUCH
+                      </Button>
+
+                      <ContactModal
+                        open={isModalOpen}                  // boolean
+                        onClose={() => setIsModalOpen(false)}
+                        clickType={clickType}               // string (slide title)
+                      />
+
                         </div>
                       </div>
                     </div>

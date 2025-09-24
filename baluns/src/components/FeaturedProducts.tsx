@@ -40,6 +40,7 @@ export default function FeaturedProducts() {
     sectionRefs.current[id]?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   const [modalOpen, setModalOpen] = useState(false);
+  const [clickType, setClickType] = useState("");
   return (
     <div>
       {/* Product Cards */}
@@ -136,11 +137,16 @@ export default function FeaturedProducts() {
                       </div>
                     ))}
 
-                    <Button 
-                    onClick={() => setModalOpen(true)}
-                    className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg">
+                    <Button
+                      onClick={() => {
+                        setClickType(product.title); // ✅ store the product title
+                        setModalOpen(true);           // ✅ open the modal
+                      }}
+                      className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg"
+                    >
                       GET IN TOUCH
                     </Button>
+
                     <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} clickType="button"/>
                   </div>
                 </div>
