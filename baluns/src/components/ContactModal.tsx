@@ -8,10 +8,11 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 interface ContactModalProps {
   open: boolean;
-  clickType: string;
+  clickType: string; // Slide title
   onClose: () => void;
 }
 
@@ -21,14 +22,17 @@ export default function ContactModal({
   clickType,
 }: ContactModalProps) {
   const [form, setForm] = useState({
-    address: "",
-    location: "",
-    mapsLink: "",
+    name: "",
+    email: "",
+    phone: "",
+    query: "",
   });
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -39,10 +43,11 @@ export default function ContactModal({
 
     try {
       const formData = new FormData();
-      formData.append("address", form.address);
-      formData.append("location", form.location);
-      formData.append("mapsLink", form.mapsLink);
-      formData.append("clickType", clickType); // send the slide title
+      formData.append("name", form.name);
+      formData.append("email", form.email);
+      formData.append("phone", form.phone);
+      formData.append("query", form.query);
+      formData.append("clickType", clickType); // slide title or context
 
       const res = await fetch("https://balunstech.com/send_email.php", {
         method: "POST",
@@ -52,10 +57,10 @@ export default function ContactModal({
       const text = await res.text();
 
       if (res.ok) {
-        setResponse("✅ Mail sent successfully!");
-        setForm({ address: "", location: "", mapsLink: "" });
+        setResponse("✅ Message sent successfully!");
+        setForm({ name: "", email: "", phone: "", query: "" });
       } else {
-        setResponse("❌ Failed to send mail.");
+        setResponse("❌ Failed to send message.");
       }
 
       console.log("Server Response:", text);
@@ -71,34 +76,44 @@ export default function ContactModal({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Send Your Location</DialogTitle>
+          <DialogTitle>Contact Us</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
-            name="address"
-            placeholder="Your Address"
-            value={form.address}
+            name="name"
+            placeholder="Your Name"
+            value={form.name}
             onChange={handleChange}
             required
           />
           <Input
-            name="location"
-            placeholder="Your Location (City, State)"
-            value={form.location}
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={form.email}
             onChange={handleChange}
             required
           />
           <Input
-            type="url"
-            name="mapsLink"
-            placeholder="Google Maps Link"
-            value={form.mapsLink}
+            type="tel"
+            name="phone"
+            placeholder="Your Phone Number"
+            value={form.phone}
+            onChange={handleChange}
+            required
+          />
+          <Textarea
+            name="query"
+            placeholder="Your Query"
+            value={form.query}
             onChange={handleChange}
             required
           />
 
-          {response && <p className="text-sm text-center mt-2">{response}</p>}
+          {response && (
+            <p className="text-sm text-center mt-2">{response}</p>
+          )}
 
           <DialogFooter>
             <Button type="submit" disabled={loading}>
