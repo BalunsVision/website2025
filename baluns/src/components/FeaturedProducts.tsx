@@ -1,39 +1,12 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  CarouselApi,
-} from "@/components/ui/carousel";
 import products from "@/data/featuredProducts.json";
 import ContactModal from "@/components/ContactModal";
+import { Product } from "@/types"; // optional, your types file
 
-// Product types
-interface ProductSection {
-  title: string;
-  description: string;
-  features: string[];
-}
+// Lazy load MediaCarousel
+const MediaCarousel = lazy(() => import("./MediaCarousel"));
 
-interface ProductMedia {
-  images: string[];
-  videos: string[];
-  htmlFiles: string[];
-}
-
-interface Product {
-  id: string;
-  title: string;
-  subtitle: string;
-  background?: string;
-  media: ProductMedia;
-  sections: ProductSection[];
-}
-
-// FeaturedProducts Component
 export default function FeaturedProducts() {
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const scrollToSection = (id: string) => {
@@ -41,6 +14,7 @@ export default function FeaturedProducts() {
   };
   const [modalOpen, setModalOpen] = useState(false);
   const [clickType, setClickType] = useState("");
+
   return (
     <div>
       {/* Product Cards */}
@@ -98,7 +72,6 @@ export default function FeaturedProducts() {
             ref={(el: HTMLDivElement | null) => (sectionRefs.current[product.id] = el)}
             className="py-8 sm:py-10 lg:py-12"
           >
-
             <div className="max-w-screen-2xl mx-auto px-4 sm:px-6">
               <div
                 className="relative text-white rounded-xl overflow-hidden shadow-2xl bg-cover bg-center"
@@ -108,7 +81,9 @@ export default function FeaturedProducts() {
                   
                   {/* Media */}
                   <div className={`w-full lg:w-1/2 flex items-center justify-center p-5 sm:p-6 lg:p-8 h-full`}>
-                    <MediaCarousel product={product} />
+                    <Suspense fallback={<div className="w-full h-[500px] bg-gray-200 flex items-center justify-center">Loading...</div>}>
+                      <MediaCarousel product={product} />
+                    </Suspense>
                   </div>
 
                   {/* Text */}
@@ -139,15 +114,15 @@ export default function FeaturedProducts() {
 
                     <Button
                       onClick={() => {
-                        setClickType(product.title); // ✅ store the product title
-                        setModalOpen(true);           // ✅ open the modal
+                        setClickType(product.title); // store the product title
+                        setModalOpen(true);           // open the modal
                       }}
                       className="w-fit bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-all duration-300 shadow-lg"
                     >
                       GET IN TOUCH
                     </Button>
 
-                    <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} clickType="button"/>
+                    <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} clickType={clickType}/>
                   </div>
                 </div>
               </div>
@@ -158,89 +133,3 @@ export default function FeaturedProducts() {
     </div>
   );
 }
-
-/** Media Carousel */
-function MediaCarousel({ product }: { product: Product }) {
-  const slides: { type: "image" | "video" | "html"; src: string }[] = [];
-
-  product.media.images?.forEach((src) => slides.push({ type: "image", src }));
-  product.media.videos?.forEach((src) => slides.push({ type: "video", src }));
-  product.media.htmlFiles?.forEach((src) => slides.push({ type: "html", src }));
-
-  if (slides.length <= 1) {
-    const only = slides[0] || { type: "image", src: "/placeholder.png" };
-    return (
-      <div className="flex items-center justify-center w-full h-[500px] bg-black rounded-xl overflow-hidden">
-        {only.type === "image" && <img src={only.src} alt={product.title} className="w-full h-full " />}
-        {only.type === "video" && <div className="w-full h-full rounded-lg overflow-hidden bg-black">
-            <video
-              src={only.src}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-fill"
-            />
-          </div>
-        }
-        {only.type === "html" && <iframe src={only.src} title={product.title} className="w-full h-full border-none" />}
-      </div>
-    );
-  }
-
-  const [api, setApi] = useState<CarouselApi>();
-  const intervalRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (!api) return;
-
-    const start = () => {
-      stop();
-      intervalRef.current = setInterval(() => api.scrollNext(), 3000);
-    };
-    const stop = () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-
-    start();
-
-    const root = api.rootNode();
-    root.addEventListener("mouseenter", stop);
-    root.addEventListener("mouseleave", start);
-
-    return () => {
-      stop();
-      root.removeEventListener("mouseenter", stop);
-      root.removeEventListener("mouseleave", start);
-    };
-  }, [api]);
-
-  return (
-    <Carousel setApi={setApi} opts={{ loop: true }} className="w-full h-[500px] relative group rounded-xl overflow-hidden">
-      <CarouselContent>
-        {slides.map((slide, i) => (
-          <CarouselItem key={i}>
-            <div className="flex items-center justify-center w-full h-[500px] bg-black">
-              {slide.type === "image" && <img src={slide.src} alt={`${product.title}-${i}`} className="w-full h-full" />}
-              {slide.type === "video" && <div className="w-full h-full rounded-lg overflow-hidden bg-black">
-                  <video
-                    src={slide.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-fill"
-                  />
-                </div>
-                }
-              {slide.type === "html" && <iframe src={slide.src} title={`${product.title}-${i}`} className="w-full h-full border-none" />}
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious className="absolute left-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 bg-white/70 hover:bg-white rounded-full shadow-md" />
-      <CarouselNext className="absolute right-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 bg-white/70 hover:bg-white rounded-full shadow-md" />
-    </Carousel>
-  );
-}
-
