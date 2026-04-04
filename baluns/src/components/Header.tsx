@@ -17,6 +17,7 @@ const Header = () => {
     { name: "Shop", path: "/shop" },
     { name: "Careers", path: "/careers" },
     { name: "AboutUs", path: "/aboutus" },
+    { name: "RF & T&M SOLUTIONS", path: "/rf-solutions" },
     { name: "Contact Us", path: "/contact" },
   ];
 
@@ -105,7 +106,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                onClick={() => setIsMenuOpen(false)} // close after click
+                onClick={() => setIsMenuOpen(false)}
                 className={`block font-medium transition-all duration-300 py-2 px-3 rounded-md ${
                   isActivePath(item.path)
                     ? "text-orange-primary bg-orange-50"

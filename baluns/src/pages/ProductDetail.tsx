@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductDetailHero from '@/components/ProductDetail/ProductDetailHero';
@@ -11,11 +11,12 @@ import ShopContact from '@/components/ShopContact';
 import productData from '@/data/productDetailData.json';
 
 const ProductDetail = () => {
-  const { productId } = useParams<{ productId: string }>();
+  const { productId, seriesId } = useParams<{ productId: string; seriesId?: string }>();
   const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'parts' | 'download'>('overview');
-  const [activeSeries, setActiveSeries] = useState('all');
+  const navigate = useNavigate();
 
   const product = productData[productId as keyof typeof productData];
+  const activeSeries = seriesId || 'all';
 
   const seriesContainerRef = useRef<HTMLDivElement>(null);
   const seriesRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -56,8 +57,14 @@ const ProductDetail = () => {
     );
   }
 
-  const handleSeriesClick = (seriesId: string, index: number) => {
-    setActiveSeries(seriesId);
+  const handleSeriesClick = (clickedSeriesId: string, index: number) => {
+    // Navigate to the series-specific route
+    if (clickedSeriesId === 'all') {
+      navigate(`/shop/${productId}`);
+    } else {
+      navigate(`/shop/${productId}/${clickedSeriesId}`);
+    }
+    
     const container = seriesContainerRef.current;
     const item = seriesRefs.current[index];
     if (container && item) {
@@ -77,7 +84,10 @@ const ProductDetail = () => {
         {/* Breadcrumb */}
         <div className="bg-white border-b">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-muted-foreground">
-            {product.breadcrumb}
+            {activeSeries !== 'all' 
+              ? `${product.breadcrumb} / ${product.series.find(s => s.id === activeSeries)?.name || ''}`
+              : product.breadcrumb
+            }
           </div>
 
           {/* Series Slider */}
@@ -147,16 +157,62 @@ const ProductDetail = () => {
         {/* Tab Content */}
         {activeTab === 'overview' && (
           <>
-            <ProductDetailHero data={product.overview.hero} />
-            <ProductDetailOverview sections={product.overview.sections} />
-            <ProductDetailProducts products={product.products} />
-            <ProductDetailParts parts={product.parts} />
-            <ProductDetailDownloads downloads={product.downloads} />
+            <ProductDetailHero 
+              data={activeSeries !== 'all' && (product as any).seriesData?.[activeSeries]?.hero 
+                ? (product as any).seriesData[activeSeries].hero 
+                : product.overview.hero
+              } 
+            />
+            <ProductDetailOverview 
+              sections={activeSeries !== 'all' && (product as any).seriesData?.[activeSeries]?.sections 
+                ? (product as any).seriesData[activeSeries].sections 
+                : product.overview.sections
+              } 
+            />
+            <ProductDetailProducts 
+              products={activeSeries !== 'all' 
+                ? product.products.filter((p: any) => p.series === activeSeries)
+                : product.products
+              } 
+            />
+            <ProductDetailParts 
+              parts={activeSeries !== 'all' && (product as any).seriesData?.[activeSeries]?.parts
+                ? (product as any).seriesData[activeSeries].parts
+                : product.parts
+              } 
+            />
+            <ProductDetailDownloads 
+              downloads={activeSeries !== 'all' && (product as any).seriesData?.[activeSeries]?.downloads
+                ? (product as any).seriesData[activeSeries].downloads
+                : product.downloads
+              } 
+            />
           </>
         )}
-        {activeTab === 'products' && <ProductDetailProducts products={product.products} />}
-        {activeTab === 'parts' && <ProductDetailParts parts={product.parts} />}
-        {activeTab === 'download' && <ProductDetailDownloads downloads={product.downloads} />}
+        {activeTab === 'products' && (
+          <ProductDetailProducts 
+            products={activeSeries !== 'all' 
+              ? product.products.filter((p: any) => p.series === activeSeries)
+              : product.products
+            } 
+          />
+        )}
+        {activeTab === 'parts' && (
+          <ProductDetailParts 
+            parts={activeSeries !== 'all' && (product as any).seriesData?.[activeSeries]?.parts
+              ? (product as any).seriesData[activeSeries].parts
+              : product.parts
+            } 
+          />
+        )}
+        {activeTab === 'download' && (
+          <ProductDetailDownloads 
+            downloads={activeSeries !== 'all' && (product as any).seriesData?.[activeSeries]?.downloads
+              ? (product as any).seriesData[activeSeries].downloads
+              : product.downloads
+            } 
+          />
+        )}
 
         <ShopContact />
       </main>

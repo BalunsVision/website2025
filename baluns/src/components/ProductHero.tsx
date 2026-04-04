@@ -1,35 +1,56 @@
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import products from "@/data/productGrid.json";
 
 const ProductHero = () => {
+  const navigate = useNavigate();
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % products.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section
-      className="relative bg-gradient-to-br from-black/70 to-gray-900 text-white flex items-center justify-center text-center"
-      style={{
-        backgroundImage: "url('/uploads/20210120055941075.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        minHeight: "85vh", // 🔥 Increased background height
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
+    <section className="relative bg-gradient-to-br from-gray-900 to-black overflow-hidden">
+      {/* Main Slider */}
+      <div className="relative h-[60vh] flex items-center justify-center">
+        {products.map((product, index) => (
+          <div
+            key={product.id}
+            onClick={() => navigate(`/shop/${product.slug}`)}
+            className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-opacity duration-700 ${
+              index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
+          >
+            <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="max-h-[80%] max-w-[80%] object-contain drop-shadow-2xl"
+              />
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/70 px-6 py-3 rounded-lg">
+                <h2 className="text-white text-xl font-semibold">{product.name}</h2>
+                <p className="text-gray-300 text-sm">{product.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-3xl px-6 sm:px-8">
-        {/* <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          ID2000 Smart ×{" "}
-          <span className="text-orange-primary">Efficient</span>
-        </h1>
-
-        <p className="text-lg sm:text-xl mb-6 opacity-90 leading-relaxed">
-          Perfectly embedded in automated machine equipment, adaptable for the
-          demand for code reading in harsh environments.
-        </p> */}
-
-        {/* <Button className="bg-orange-primary hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-base font-semibold transition-transform transform hover:scale-105 shadow-lg">
-          Learn More
-        </Button> */}
+      {/* Dots Navigation */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {products.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full transition-colors ${
+              index === currentIndex ? "bg-orange-500" : "bg-white/50"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
