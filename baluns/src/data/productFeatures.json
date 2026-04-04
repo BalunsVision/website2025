@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "Users",
+    "title": "Multidimensional",
+    "description": "Perception"
+  },
+  {
+    "icon": "Brain",
+    "title": "Artificial",
+    "description": "Intelligence"
+  },
+  {
+    "icon": "Database",
+    "title": "Big Data",
+    "description": ""
+  },
+  {
+    "icon": "Cloud",
+    "title": "Cloud",
+    "description": "Computing"
+  }
+]

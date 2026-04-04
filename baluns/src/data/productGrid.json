@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "slug": "area-scan-camera",
+    "name": "Area Scan Camera",
+    "category": "",
+    "image": "/uploads/20220324015032163.png",
+    "description": "Full resolution & rich interfaces"
+  },
+  {
+    "id": 2,
+    "slug": "line-scan-camera",
+    "name": "Line Scan Camera",
+    "category": "",
+    "image": "/uploads/20220326021306972.png",
+    "description": "High-frequency transmission"
+  },
+  {
+    "id": 3,
+    "slug": "smart-camera",
+    "name": "Smart Camera",
+    "category": "",
+    "image": "/uploads/20220324015430773.png",
+    "description": "Autonomous self-training with AI"
+  },
+  {
+    "id": 4,
+    "slug": "fixed-code-reader",
+    "name": "Fixed code reader",
+    "category": "",
+    "image": "/uploads/20220324015451167.png",
+    "description": "Deep learning & excellent decoding"
+  },
+  {
+    "id": 5,
+    "slug": "handheld-code-reader",
+    "name": "Handheld Code Reader",
+    "category": "",
+    "image": "/uploads/20250430023419752.png",
+    "description": "Handle Extreme Barcodes"
+  },
+  {
+    "id": 6,
+    "slug": "3d-camera",
+    "name": "3D Camera",
+    "category": "",
+    "image": "/uploads/20220324015632078.png",
+    "description": "Built-in algorithm platform"
+  },
+  {
+    "id": 7,
+    "slug": "vision-box",
+    "name": "Vision Box",
+    "category": "",
+    "image": "/uploads/20220324015659794.png",
+    "description": "Integrated peripheral control"
+  },
+  {
+    "id": 8,
+    "slug": "vision-components",
+    "name": "Vision Components",
+    "category": "",
+    "image": "/uploads/20220324015742605.png",
+    "description": "High cost performance"
+  },
+  {
+    "id": 9,
+    "slug": "lens",
+    "name": "Lens",
+    "category": "",
+    "image": "/uploads/20220324015821216.png",
+    "description": "High-definition imaging"
+  },
+  {
+    "id": 10,
+    "slug": "light-source",
+    "name": "Light source",
+    "category": "",
+    "image": "/uploads/20210118031142246.png",
+    "description": "Diverse color & specification"
+  }
+]

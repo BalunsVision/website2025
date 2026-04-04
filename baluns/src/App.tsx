@@ -8,6 +8,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Solutions from "./pages/Solutions";
 import Products from "./pages/Products";
+import Shop from "./pages/Shop";
+import ProductDetail from "./pages/ProductDetail";
 import Careers from "./pages/Careers";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/shop/:productId" element={<ProductDetail />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
