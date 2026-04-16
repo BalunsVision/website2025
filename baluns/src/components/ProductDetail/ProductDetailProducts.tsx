@@ -3,8 +3,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { X, ShoppingCart } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { X, ShoppingCart, Download } from 'lucide-react';
 import ContactModal from '@/components/ContactModal';
 
 interface Product {
@@ -14,10 +16,11 @@ interface Product {
   maxFrameRate: string;
   dataInterface: string;
   monoColor: string;
-  certification: string;
+  shutter?: string;
   status: string;
   image?: string;
   description?: string;
+  pdf?: string;
 }
 
 interface ProductDetailProductsProps {
@@ -30,19 +33,21 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [showComparison, setShowComparison] = useState(false);
   const [showBuyModal, setShowBuyModal] = useState(false);
+  const [showProductModal, setShowProductModal] = useState(false);
+  const [selectedProductForDownload, setSelectedProductForDownload] = useState<Product | null>(null);
+  const [downloadForm, setDownloadForm] = useState({ name: '', email: '', phone: '', query: '' });
+  const [downloadLoading, setDownloadLoading] = useState(false);
+  const [downloadResponse, setDownloadResponse] = useState('');
   const [filters, setFilters] = useState({
     monoColor: 'all',
     sensor: 'all',
     maxFrameRate: 'all',
     resolution: 'all',
     dataInterface: 'all',
-    maxLineRate: 'all',
-    observation: 'all'
   });
   
   const itemsPerPage = 50;
 
-  // Extract unique filter options from products
   const filterOptions = useMemo(() => {
     return {
       monoColor: ['all', ...new Set(products.map(p => p.monoColor).filter(Boolean))],
@@ -53,7 +58,6 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
     };
   }, [products]);
 
-  // Filter products based on selected filters
   const filteredProducts = useMemo(() => {
     return products.filter(product => {
       if (!showDiscontinued && product.status === 'Discontinued') return false;
@@ -66,7 +70,6 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
     });
   }, [products, filters, showDiscontinued]);
 
-  // Reset to page 1 when filters or status change
   useEffect(() => {
     setCurrentPage(1);
   }, [filters, showDiscontinued, products.length]);
@@ -90,11 +93,64 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
       maxFrameRate: 'all',
       resolution: 'all',
       dataInterface: 'all',
-      maxLineRate: 'all',
-      observation: 'all'
     });
     setShowDiscontinued(false);
     setCurrentPage(1);
+  };
+
+  const handleProductModelClick = (product: Product) => {
+    setSelectedProductForDownload(product);
+    setDownloadForm({ name: '', email: '', phone: '', query: '' });
+    setDownloadResponse('');
+    setShowProductModal(true);
+  };
+
+  const handleDownloadFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setDownloadForm({ ...downloadForm, [e.target.name]: e.target.value });
+  };
+
+  const handleDownloadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedProductForDownload) return;
+    setDownloadLoading(true);
+    setDownloadResponse('');
+
+    try {
+      const formData = new FormData();
+      formData.append('name', downloadForm.name);
+      formData.append('email', downloadForm.email);
+      formData.append('phone', downloadForm.phone);
+      formData.append('query', downloadForm.query);
+      formData.append('clickType', `Product Download: ${selectedProductForDownload.model}`);
+
+      const res = await fetch('https://balunstech.com/send_email.php', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (res.ok) {
+        setDownloadResponse('✅ Details sent successfully!');
+        setDownloadForm({ name: '', email: '', phone: '', query: '' });
+        
+        // Trigger PDF download
+        if (selectedProductForDownload.pdf) {
+          const link = document.createElement('a');
+          link.href = selectedProductForDownload.pdf;
+          link.download = `${selectedProductForDownload.model}.pdf`;
+          link.target = '_blank';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      } else {
+        setDownloadResponse('❌ Failed to send details.');
+      }
+    } catch (err) {
+      console.error('Error:', err);
+      setDownloadResponse('❌ Something went wrong.');
+    } finally {
+      setDownloadLoading(false);
+    }
   };
 
   const comparedProducts = products.filter(p => selectedProducts.includes(p.model));
@@ -196,30 +252,6 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
                 </SelectContent>
               </Select>
             </div>
-
-            <div>
-              <label className="text-sm font-medium mb-2 block">Max. Line Rate</label>
-              <Select value={filters.maxLineRate} onValueChange={(value) => setFilters(prev => ({ ...prev, maxLineRate: value }))}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All + 3</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div>
-              <label className="text-sm font-medium mb-2 block">Observation/Temperature Measurement</label>
-              <Select value={filters.observation} onValueChange={(value) => setFilters(prev => ({ ...prev, observation: value }))}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All + 2</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
           </div>
 
           <div className="text-right">
@@ -244,7 +276,7 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
                 <TableHead className="font-bold">Max. frame rate</TableHead>
                 <TableHead className="font-bold">Data interface</TableHead>
                 <TableHead className="font-bold">Mono/Color</TableHead>
-                <TableHead className="font-bold">Certification</TableHead>
+                <TableHead className="font-bold">Shutter</TableHead>
                 <TableHead className="font-bold">Product status</TableHead>
                 <TableHead className="font-bold">Comparison</TableHead>
               </TableRow>
@@ -252,7 +284,12 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
             <TableBody>
               {paginatedProducts.map((product, index) => (
                 <TableRow key={index} className="hover:bg-gray-50">
-                  <TableCell className="font-medium">{product.model}</TableCell>
+                  <TableCell 
+                    className="font-medium text-orange-primary cursor-pointer hover:underline"
+                    onClick={() => handleProductModelClick(product)}
+                  >
+                    {product.model}
+                  </TableCell>
                   <TableCell>{product.sensorModel}</TableCell>
                   <TableCell>{product.resolution}</TableCell>
                   <TableCell>{product.maxFrameRate}</TableCell>
@@ -270,7 +307,7 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
                     )}
                   </TableCell>
                   <TableCell>{product.monoColor}</TableCell>
-                  <TableCell>{product.certification}</TableCell>
+                  <TableCell>{product.shutter || '-'}</TableCell>
                   <TableCell>
                     <span className="text-sm text-orange-600">{product.status}</span>
                   </TableCell>
@@ -485,9 +522,9 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
                       ))}
                     </tr>
                     <tr className="border-b bg-muted/30">
-                      <td className="p-4 font-bold">Certification</td>
+                      <td className="p-4 font-bold">Shutter</td>
                       {comparedProducts.map((product) => (
-                        <td key={product.model} className="p-4 text-center">{product.certification}</td>
+                        <td key={product.model} className="p-4 text-center">{product.shutter || '-'}</td>
                       ))}
                     </tr>
                     <tr className="border-b">
@@ -502,6 +539,60 @@ const ProductDetailProducts = ({ products }: ProductDetailProductsProps) => {
                 </table>
               </div>
             </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Product Model Download Modal */}
+        <Dialog open={showProductModal} onOpenChange={setShowProductModal}>
+          <DialogContent className="sm:max-w-lg">
+            <DialogHeader>
+              <DialogTitle>
+                {selectedProductForDownload ? `Download - ${selectedProductForDownload.model}` : 'Download'}
+              </DialogTitle>
+            </DialogHeader>
+
+            <form onSubmit={handleDownloadSubmit} className="space-y-4">
+              <Input
+                name="name"
+                placeholder="Your Name"
+                value={downloadForm.name}
+                onChange={handleDownloadFormChange}
+                required
+              />
+              <Input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={downloadForm.email}
+                onChange={handleDownloadFormChange}
+                required
+              />
+              <Input
+                type="tel"
+                name="phone"
+                placeholder="Your Phone Number"
+                value={downloadForm.phone}
+                onChange={handleDownloadFormChange}
+                required
+              />
+              <Textarea
+                name="query"
+                placeholder="Your Query (optional)"
+                value={downloadForm.query}
+                onChange={handleDownloadFormChange}
+              />
+
+              {downloadResponse && (
+                <p className="text-sm text-center mt-2">{downloadResponse}</p>
+              )}
+
+              <DialogFooter>
+                <Button type="submit" disabled={downloadLoading} className="bg-green-600 hover:bg-green-700 text-white">
+                  <Download className="h-4 w-4 mr-2" />
+                  {downloadLoading ? 'Processing...' : 'Download'}
+                </Button>
+              </DialogFooter>
+            </form>
           </DialogContent>
         </Dialog>
 

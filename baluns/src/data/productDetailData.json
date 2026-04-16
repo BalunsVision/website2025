@@ -56,183 +56,209 @@
           "subtitle": "IO trigger, ROI support, wide range of operating temp, low power consumption, stable performance.",
           "image": "/uploads/fa524db3b86f.png",
           "features": [
-            { "label": "External Trigger", "position": "right" },
-            { "label": "Gain", "position": "right" },
-            { "label": "Exposure", "position": "right" },
-            { "label": "Decimation", "position": "left" },
-            { "label": "gamma", "position": "right" },
-            { "label": "LUT", "position": "right" },
-            { "label": "Binning", "position": "left" },
-            { "label": "ROI", "position": "right" }
+            {
+              "label": "External Trigger",
+              "position": "right"
+            },
+            {
+              "label": "Gain",
+              "position": "right"
+            },
+            {
+              "label": "Exposure",
+              "position": "right"
+            },
+            {
+              "label": "Decimation",
+              "position": "left"
+            },
+            {
+              "label": "gamma",
+              "position": "right"
+            },
+            {
+              "label": "LUT",
+              "position": "right"
+            },
+            {
+              "label": "Binning",
+              "position": "left"
+            },
+            {
+              "label": "ROI",
+              "position": "right"
+            }
           ]
         }
       ]
     },
-     "products": [
-       {
-         "model": "MV-CA003-20GC",
-         "sensorModel": "PYTHON300",
-         "resolution": "672 × 512",
-         "maxFrameRate": "336.0 fps",
-         "dataInterface": "GigE",
-         "monoColor": "Color",
-         "certification": "CE, RoHS, KC",
-         "status": "Active",
-         "image": "/uploads/20220324101957262.png",
-         "series": "ct"
-       },
-       {
-         "model": "MV-CA003-21UC",
-         "sensorModel": "PYTHON300",
-         "resolution": "640 × 480",
-         "maxFrameRate": "84.6 fps",
-         "dataInterface": "USB3.0",
-         "monoColor": "Color",
-         "certification": "CE, RoHS, KC",
-         "status": "Active",
-         "image": "/uploads/20220324101957262.png",
-         "series": "cs"
-       }
-     ],
-     "seriesData": {
-       "ct": {
-         "hero": {
-           "title": "CT Area Scan Camera",
-           "description": "Engineered for industrial applications with premium performance. BASE/PRO/MAX configurations address varied needs. PRO/MAX models feature IP67 protection, multi-spectral fusion, and precision thermal control for harsh environments. MAX adds expanded interfaces for integrated lens/lighting/housing control, enhancing system flexibility.",
-           "bannerImage": "/uploads/20250529111720435.png"
-         },
-         "sections": [
-           {
-             "title": "IP67 protection level, suitable for harsh environments",
-             "subtitle": "By combining different cables and protective covers, an IP67 protection level can be achieved.",
-             "image": "/uploads/20250529111720435.png",
-             "fullWidth": false
-           },
-           {
-             "title": "Integrated lens and light source control",
-             "subtitle": "No need for complex wiring and driver configuration, simple implementation of lens focusing and light source control.",
-             "image": "/uploads/20250529111720435.png",
-             "fullWidth": false
-           },
-           {
-             "title": "Enhanced ISP Algorithm with Human-Visual-Accurate Color Reproduction",
-             "subtitle": "Automatic color calibration via multi-spectral fusion technology ensures color fidelity aligned with human visual perception.",
-             "image": "/uploads/20250529111720435.png",
-             "fullWidth": true
-           },
-           {
-             "title": "Precision Thermal Architecture Achieves Rapid Thermal Equilibrium",
-             "subtitle": "PID-controlled algorithm accelerates thermal stabilization while minimizing drift-induced errors for industrial-grade consistency.",
-             "image": "/uploads/20250529111720435.png",
-             "fullWidth": true
-           }
-         ],
-         "parts": [
-           {
-             "category": "Frame Grabber",
-             "items": [
-               {
-                 "model": "MV-GE1004",
-                 "name": "GigE Frame Grabber",
-                 "image": "/uploads/group-1000001854.png"
-               },
-               {
-                 "model": "MV-GE2004P",
-                 "name": "PoE GigE Frame Grabber",
-                 "image": "/uploads/group-1000001855.png"
-               }
-             ]
-           }
-         ],
-         "downloads": {
-           "software": [
-             {
-               "icon": "/uploads/5ade3547-8cdb-4d0d-b108-eadf224a77b1.png",
-               "title": "Machine Vision Industrial Camera SDK V4.7.0 Runtime Package (Windows)",
-               "version": "V4.7.0"
-             },
-             {
-               "icon": "/uploads/5ade3547-8cdb-4d0d-b108-eadf224a77b1.png",
-               "title": "Machine Vision Industrial Camera SDK V4.7.0 Runtime Package (Linux)",
-               "version": "V4.7.0"
-             }
-           ],
-           "documents": []
-         }
-       },
-       "cs": {
-         "hero": {
-           "title": "CS Area Scan Camera",
-           "description": "Compact and versatile CS series cameras designed for space-constrained applications. Featuring advanced sensors and multiple interface options for flexible integration.",
-           "bannerImage": "/uploads/20220324102009644.png"
-         },
-         "sections": [
-           {
-             "title": "Compact Design",
-             "subtitle": "Space-saving form factor without compromising performance.",
-             "image": "/uploads/20220324102009644.png",
-             "fullWidth": false
-           }
-         ],
-         "parts": [],
-         "downloads": {
-           "software": [],
-           "documents": []
-         }
-       },
-       "cu": {
-         "hero": {
-           "title": "CU Area Scan Camera",
-           "description": "USB3.0 interface cameras offering plug-and-play convenience with high-speed data transfer capabilities.",
-           "bannerImage": "/uploads/2023032807454112320230328074541123.png"
-         },
-         "sections": [],
-         "parts": [],
-         "downloads": {
-           "software": [],
-           "documents": []
-         }
-       },
-       "ch": {
-         "hero": {
-           "title": "CH Area Scan Camera",
-           "description": "High-resolution cameras with Camera Link interface for demanding industrial applications requiring maximum bandwidth.",
-           "bannerImage": "/uploads/20220324131237012.png"
-         },
-         "sections": [],
-         "parts": [],
-         "downloads": {
-           "software": [],
-           "documents": []
-         }
-       },
-       "cb": {
-         "hero": {
-           "title": "CB Area Scan Camera",
-           "description": "Board-level cameras for OEM integration, offering maximum flexibility for custom housing and lens configurations.",
-           "bannerImage": "/uploads/20220324104901914.png"
-         },
-         "sections": [],
-         "parts": [],
-         "downloads": {
-           "software": [],
-           "documents": []
-         }
-       },
-       "ci": {
-         "hero": {
-           "title": "CI Area Scan Camera",
-           "description": "Intelligent cameras with built-in processing capabilities for edge computing and standalone operation.",
-           "bannerImage": "/uploads/20220524072116201.png"
-         },
-         "sections": [],
-         "parts": [],
-         "downloads": {
-           "software": [],
-           "documents": []
-         }
-       }
-     },
+    "products": [
+      {
+        "model": "MV-CA003-20GC",
+        "sensorModel": "PYTHON300",
+        "resolution": "672 \u00d7 512",
+        "maxFrameRate": "336.0 fps",
+        "dataInterface": "GigE",
+        "monoColor": "Color",
+        "status": "Active",
+        "image": "/uploads/20220324101957262.png",
+        "series": "ct",
+        "shutter": "Global",
+        "pdf": "/uploads/pdf/MV-CA003-20GC.pdf"
+      },
+      {
+        "model": "MV-CA003-21UC",
+        "sensorModel": "PYTHON300",
+        "resolution": "640 \u00d7 480",
+        "maxFrameRate": "84.6 fps",
+        "dataInterface": "USB3.0",
+        "monoColor": "Color",
+        "status": "Active",
+        "image": "/uploads/20220324101957262.png",
+        "series": "cs",
+        "shutter": "Rolling",
+        "pdf": "/uploads/pdf/MV-CA003-21UC.pdf"
+      }
+    ],
+    "seriesData": {
+      "ct": {
+        "hero": {
+          "title": "CT Area Scan Camera",
+          "description": "Engineered for industrial applications with premium performance. BASE/PRO/MAX configurations address varied needs. PRO/MAX models feature IP67 protection, multi-spectral fusion, and precision thermal control for harsh environments. MAX adds expanded interfaces for integrated lens/lighting/housing control, enhancing system flexibility.",
+          "bannerImage": "/uploads/20250529111720435.png"
+        },
+        "sections": [
+          {
+            "title": "IP67 protection level, suitable for harsh environments",
+            "subtitle": "By combining different cables and protective covers, an IP67 protection level can be achieved.",
+            "image": "/uploads/20250529111720435.png",
+            "fullWidth": false
+          },
+          {
+            "title": "Integrated lens and light source control",
+            "subtitle": "No need for complex wiring and driver configuration, simple implementation of lens focusing and light source control.",
+            "image": "/uploads/20250529111720435.png",
+            "fullWidth": false
+          },
+          {
+            "title": "Enhanced ISP Algorithm with Human-Visual-Accurate Color Reproduction",
+            "subtitle": "Automatic color calibration via multi-spectral fusion technology ensures color fidelity aligned with human visual perception.",
+            "image": "/uploads/20250529111720435.png",
+            "fullWidth": true
+          },
+          {
+            "title": "Precision Thermal Architecture Achieves Rapid Thermal Equilibrium",
+            "subtitle": "PID-controlled algorithm accelerates thermal stabilization while minimizing drift-induced errors for industrial-grade consistency.",
+            "image": "/uploads/20250529111720435.png",
+            "fullWidth": true
+          }
+        ],
+        "parts": [
+          {
+            "category": "Frame Grabber",
+            "items": [
+              {
+                "model": "MV-GE1004",
+                "name": "GigE Frame Grabber",
+                "image": "/uploads/group-1000001854.png"
+              },
+              {
+                "model": "MV-GE2004P",
+                "name": "PoE GigE Frame Grabber",
+                "image": "/uploads/group-1000001855.png"
+              }
+            ]
+          }
+        ],
+        "downloads": {
+          "software": [
+            {
+              "icon": "/uploads/5ade3547-8cdb-4d0d-b108-eadf224a77b1.png",
+              "title": "Machine Vision Industrial Camera SDK V4.7.0 Runtime Package (Windows)",
+              "version": "V4.7.0"
+            },
+            {
+              "icon": "/uploads/5ade3547-8cdb-4d0d-b108-eadf224a77b1.png",
+              "title": "Machine Vision Industrial Camera SDK V4.7.0 Runtime Package (Linux)",
+              "version": "V4.7.0"
+            }
+          ],
+          "documents": []
+        }
+      },
+      "cs": {
+        "hero": {
+          "title": "CS Area Scan Camera",
+          "description": "Compact and versatile CS series cameras designed for space-constrained applications. Featuring advanced sensors and multiple interface options for flexible integration.",
+          "bannerImage": "/uploads/20220324102009644.png"
+        },
+        "sections": [
+          {
+            "title": "Compact Design",
+            "subtitle": "Space-saving form factor without compromising performance.",
+            "image": "/uploads/20220324102009644.png",
+            "fullWidth": false
+          }
+        ],
+        "parts": [],
+        "downloads": {
+          "software": [],
+          "documents": []
+        }
+      },
+      "cu": {
+        "hero": {
+          "title": "CU Area Scan Camera",
+          "description": "USB3.0 interface cameras offering plug-and-play convenience with high-speed data transfer capabilities.",
+          "bannerImage": "/uploads/2023032807454112320230328074541123.png"
+        },
+        "sections": [],
+        "parts": [],
+        "downloads": {
+          "software": [],
+          "documents": []
+        }
+      },
+      "ch": {
+        "hero": {
+          "title": "CH Area Scan Camera",
+          "description": "High-resolution cameras with Camera Link interface for demanding industrial applications requiring maximum bandwidth.",
+          "bannerImage": "/uploads/20220324131237012.png"
+        },
+        "sections": [],
+        "parts": [],
+        "downloads": {
+          "software": [],
+          "documents": []
+        }
+      },
+      "cb": {
+        "hero": {
+          "title": "CB Area Scan Camera",
+          "description": "Board-level cameras for OEM integration, offering maximum flexibility for custom housing and lens configurations.",
+          "bannerImage": "/uploads/20220324104901914.png"
+        },
+        "sections": [],
+        "parts": [],
+        "downloads": {
+          "software": [],
+          "documents": []
+        }
+      },
+      "ci": {
+        "hero": {
+          "title": "CI Area Scan Camera",
+          "description": "Intelligent cameras with built-in processing capabilities for edge computing and standalone operation.",
+          "bannerImage": "/uploads/20220524072116201.png"
+        },
+        "sections": [],
+        "parts": [],
+        "downloads": {
+          "software": [],
+          "documents": []
+        }
+      }
+    },
     "parts": [
       {
         "category": "Data Cables",
@@ -298,10 +324,22 @@
           "subtitle": "Ultra-fast scanning rates, continuous inspection, perfect for moving objects.",
           "image": "/uploads/2bdbe060-0376-4181-a227-cdd1824f0f93.png",
           "features": [
-            { "label": "High Line Rate", "position": "right" },
-            { "label": "Low Latency", "position": "right" },
-            { "label": "Continuous Scan", "position": "left" },
-            { "label": "Multi-Line Support", "position": "right" }
+            {
+              "label": "High Line Rate",
+              "position": "right"
+            },
+            {
+              "label": "Low Latency",
+              "position": "right"
+            },
+            {
+              "label": "Continuous Scan",
+              "position": "left"
+            },
+            {
+              "label": "Multi-Line Support",
+              "position": "right"
+            }
           ]
         }
       ]
@@ -310,13 +348,14 @@
       {
         "model": "MV-CL016-90TM",
         "sensorModel": "Custom CMOS",
-        "resolution": "16384 × 1",
+        "resolution": "16384 \u00d7 1",
         "maxFrameRate": "90 kHz",
         "dataInterface": "Camera Link",
         "monoColor": "Mono",
-        "certification": "CE, RoHS",
         "status": "Active",
-        "series": "lt"
+        "series": "lt",
+        "shutter": "Global",
+        "pdf": "/uploads/pdf/MV-CL016-90TM.pdf"
       }
     ],
     "seriesData": {
@@ -409,10 +448,22 @@
           "subtitle": "Deep learning, autonomous training, edge computing capabilities.",
           "image": "/uploads/98354657-8bb2-454e-820c-d6168b4ba677.png",
           "features": [
-            { "label": "AI Processing", "position": "right" },
-            { "label": "Auto Training", "position": "left" },
-            { "label": "Edge Computing", "position": "right" },
-            { "label": "Real-time Analysis", "position": "left" }
+            {
+              "label": "AI Processing",
+              "position": "right"
+            },
+            {
+              "label": "Auto Training",
+              "position": "left"
+            },
+            {
+              "label": "Edge Computing",
+              "position": "right"
+            },
+            {
+              "label": "Real-time Analysis",
+              "position": "left"
+            }
           ]
         }
       ]
@@ -421,13 +472,14 @@
       {
         "model": "MV-SC500-AI",
         "sensorModel": "IMX547",
-        "resolution": "2448 × 2048",
+        "resolution": "2448 \u00d7 2048",
         "maxFrameRate": "45.0 fps",
         "dataInterface": "GigE",
         "monoColor": "Color",
-        "certification": "CE, RoHS",
         "status": "Active",
-        "series": "ai"
+        "series": "ai",
+        "shutter": "Global",
+        "pdf": "/uploads/pdf/MV-SC500-AI.pdf"
       }
     ],
     "seriesData": {
@@ -507,10 +559,22 @@
           "subtitle": "Advanced algorithms, damaged code reading, multi-code support.",
           "image": "/uploads/12e7accf-220c-41e9-ba72-034f8319a5a7.png",
           "features": [
-            { "label": "1D/2D Codes", "position": "right" },
-            { "label": "Deep Learning", "position": "left" },
-            { "label": "Multi-Code", "position": "right" },
-            { "label": "High Speed", "position": "left" }
+            {
+              "label": "1D/2D Codes",
+              "position": "right"
+            },
+            {
+              "label": "Deep Learning",
+              "position": "left"
+            },
+            {
+              "label": "Multi-Code",
+              "position": "right"
+            },
+            {
+              "label": "High Speed",
+              "position": "left"
+            }
           ]
         }
       ]
@@ -519,13 +583,14 @@
       {
         "model": "MV-ID1000-50",
         "sensorModel": "CMOS Sensor",
-        "resolution": "1280 × 1024",
+        "resolution": "1280 \u00d7 1024",
         "maxFrameRate": "50.0 fps",
         "dataInterface": "Ethernet",
         "monoColor": "Mono",
-        "certification": "CE, RoHS",
         "status": "Active",
-        "series": "id"
+        "series": "id",
+        "shutter": "Global",
+        "pdf": "/uploads/pdf/MV-ID1000-50.pdf"
       }
     ],
     "seriesData": {
@@ -600,10 +665,22 @@
           "subtitle": "Damaged codes, low light, high speed, ergonomic design.",
           "image": "/uploads/0eed7a71-f82c-40b0-911d-92fd1348e080.png",
           "features": [
-            { "label": "Ergonomic", "position": "right" },
-            { "label": "Wireless", "position": "left" },
-            { "label": "Rugged", "position": "right" },
-            { "label": "Long Range", "position": "left" }
+            {
+              "label": "Ergonomic",
+              "position": "right"
+            },
+            {
+              "label": "Wireless",
+              "position": "left"
+            },
+            {
+              "label": "Rugged",
+              "position": "right"
+            },
+            {
+              "label": "Long Range",
+              "position": "left"
+            }
           ]
         }
       ]
@@ -612,13 +689,14 @@
       {
         "model": "MV-HH200-BT",
         "sensorModel": "CMOS",
-        "resolution": "640 × 480",
+        "resolution": "640 \u00d7 480",
         "maxFrameRate": "30.0 fps",
         "dataInterface": "Bluetooth",
         "monoColor": "Mono",
-        "certification": "CE, RoHS",
         "status": "Active",
-        "series": "all"
+        "series": "all",
+        "shutter": "N/A",
+        "pdf": "/uploads/pdf/MV-HH200-BT.pdf"
       }
     ],
     "parts": [
@@ -676,10 +754,22 @@
           "subtitle": "Depth sensing, 3D reconstruction, measurement tools, point cloud processing.",
           "image": "/uploads/5b0a2014-5f5e-43f5-b2d9-cc50235e60d0.png",
           "features": [
-            { "label": "Depth Map", "position": "right" },
-            { "label": "3D Reconstruction", "position": "left" },
-            { "label": "Measurement", "position": "right" },
-            { "label": "Point Cloud", "position": "left" }
+            {
+              "label": "Depth Map",
+              "position": "right"
+            },
+            {
+              "label": "3D Reconstruction",
+              "position": "left"
+            },
+            {
+              "label": "Measurement",
+              "position": "right"
+            },
+            {
+              "label": "Point Cloud",
+              "position": "left"
+            }
           ]
         }
       ]
@@ -688,13 +778,14 @@
       {
         "model": "MV-3D800-PRO",
         "sensorModel": "ToF Sensor",
-        "resolution": "1280 × 1024",
+        "resolution": "1280 \u00d7 1024",
         "maxFrameRate": "30.0 fps",
         "dataInterface": "GigE",
         "monoColor": "Depth",
-        "certification": "CE, RoHS",
         "status": "Active",
-        "series": "3d-pro"
+        "series": "3d-pro",
+        "shutter": "Global",
+        "pdf": "/uploads/pdf/MV-3D800-PRO.pdf"
       }
     ],
     "seriesData": {
@@ -769,10 +860,22 @@
           "subtitle": "Multi-camera support, I/O control, industrial connectivity, robust design.",
           "image": "/uploads/group-1000001854.png",
           "features": [
-            { "label": "Multi-Camera", "position": "right" },
-            { "label": "I/O Control", "position": "left" },
-            { "label": "Industrial PC", "position": "right" },
-            { "label": "Rugged Design", "position": "left" }
+            {
+              "label": "Multi-Camera",
+              "position": "right"
+            },
+            {
+              "label": "I/O Control",
+              "position": "left"
+            },
+            {
+              "label": "Industrial PC",
+              "position": "right"
+            },
+            {
+              "label": "Rugged Design",
+              "position": "left"
+            }
           ]
         }
       ]
@@ -785,9 +888,10 @@
         "maxFrameRate": "N/A",
         "dataInterface": "Multi-Port",
         "monoColor": "N/A",
-        "certification": "CE, RoHS",
         "status": "Active",
-        "series": "all"
+        "series": "all",
+        "shutter": "N/A",
+        "pdf": "/uploads/pdf/MV-VB4000-I7.pdf"
       }
     ],
     "parts": [
@@ -840,10 +944,22 @@
           "subtitle": "Quality components, affordable pricing, wide compatibility, reliable performance.",
           "image": "/uploads/group-1000001855.png",
           "features": [
-            { "label": "Lighting Control", "position": "right" },
-            { "label": "Cables & Connectors", "position": "left" },
-            { "label": "Mounts & Brackets", "position": "right" },
-            { "label": "Accessories", "position": "left" }
+            {
+              "label": "Lighting Control",
+              "position": "right"
+            },
+            {
+              "label": "Cables & Connectors",
+              "position": "left"
+            },
+            {
+              "label": "Mounts & Brackets",
+              "position": "right"
+            },
+            {
+              "label": "Accessories",
+              "position": "left"
+            }
           ]
         }
       ]
@@ -856,9 +972,10 @@
         "maxFrameRate": "N/A",
         "dataInterface": "Ethernet",
         "monoColor": "N/A",
-        "certification": "CE, RoHS",
         "status": "Active",
-        "series": "all"
+        "series": "all",
+        "shutter": "Global",
+        "pdf": "/uploads/pdf/MV-CTRL-LIGHT-4CH.pdf"
       }
     ],
     "parts": [
@@ -921,10 +1038,22 @@
           "subtitle": "Low distortion, high resolution, wide compatibility, durable construction.",
           "image": "/uploads/group-1000001855.png",
           "features": [
-            { "label": "HD Optics", "position": "right" },
-            { "label": "Low Distortion", "position": "left" },
-            { "label": "C-Mount", "position": "right" },
-            { "label": "Industrial Grade", "position": "left" }
+            {
+              "label": "HD Optics",
+              "position": "right"
+            },
+            {
+              "label": "Low Distortion",
+              "position": "left"
+            },
+            {
+              "label": "C-Mount",
+              "position": "right"
+            },
+            {
+              "label": "Industrial Grade",
+              "position": "left"
+            }
           ]
         }
       ]
@@ -937,9 +1066,10 @@
         "maxFrameRate": "N/A",
         "dataInterface": "C-Mount",
         "monoColor": "N/A",
-        "certification": "CE, RoHS",
         "status": "Active",
-        "series": "fixed"
+        "series": "fixed",
+        "shutter": "N/A",
+        "pdf": "/uploads/pdf/MV-LENS-16MM-F1.4.pdf"
       }
     ],
     "seriesData": {
@@ -1036,10 +1166,22 @@
           "subtitle": "Multiple colors, various sizes, uniform illumination, long lifespan.",
           "image": "/uploads/group-1000001855.png",
           "features": [
-            { "label": "RGB Colors", "position": "right" },
-            { "label": "Uniform Light", "position": "left" },
-            { "label": "Long Life", "position": "right" },
-            { "label": "Low Heat", "position": "left" }
+            {
+              "label": "RGB Colors",
+              "position": "right"
+            },
+            {
+              "label": "Uniform Light",
+              "position": "left"
+            },
+            {
+              "label": "Long Life",
+              "position": "right"
+            },
+            {
+              "label": "Low Heat",
+              "position": "left"
+            }
           ]
         }
       ]
@@ -1052,9 +1194,10 @@
         "maxFrameRate": "N/A",
         "dataInterface": "12V DC",
         "monoColor": "White",
-        "certification": "CE, RoHS",
         "status": "Active",
-        "series": "ring"
+        "series": "ring",
+        "shutter": "N/A",
+        "pdf": "/uploads/pdf/MV-LIGHT-RING-100-W.pdf"
       }
     ],
     "seriesData": {

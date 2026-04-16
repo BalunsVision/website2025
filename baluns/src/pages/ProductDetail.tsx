@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductDetailHero from '@/components/ProductDetail/ProductDetailHero';
@@ -83,11 +83,24 @@ const ProductDetail = () => {
       <main className="flex-grow">
         {/* Breadcrumb */}
         <div className="bg-white border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-muted-foreground">
-            {activeSeries !== 'all' 
-              ? `${product.breadcrumb} / ${product.series.find(s => s.id === activeSeries)?.name || ''}`
-              : product.breadcrumb
-            }
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-muted-foreground flex items-center gap-1">
+            <Link to="/products" className="hover:text-orange-primary transition-colors">Products</Link>
+            <span>/</span>
+            <Link to={`/shop`} className="hover:text-orange-primary transition-colors">Shop</Link>
+            <span>/</span>
+            <Link to={`/shop/${productId}`} className="hover:text-orange-primary transition-colors">{product.name}</Link>
+            {activeSeries !== 'all' && (
+              <>
+                <span>/</span>
+                <span className="text-foreground font-medium">{product.series.find(s => s.id === activeSeries)?.name || ''}</span>
+              </>
+            )}
+            {activeSeries === 'all' && (
+              <>
+                <span>/</span>
+                <span className="text-foreground font-medium">All Series</span>
+              </>
+            )}
           </div>
 
           {/* Series Slider */}
